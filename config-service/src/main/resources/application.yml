@@ -2,8 +2,10 @@ server:
   port: 9090
 
 spring:
+#  profiles:
+#    active: native
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/Nosbielc/MixedSaladService/configs
+          uri: https://github.com/Nosbielc/MixedSaladServiceConfig

@@ -16,6 +16,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <modules>
+        <module>config-service</module>
+    </modules>
+
     <dependencyManagement>
         <dependencies>
             <dependency>

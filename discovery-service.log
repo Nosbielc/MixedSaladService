@@ -1,0 +1,112 @@
+2019-03-21 23:07:37.353  INFO 4042 --- [restartedMain] c.n.m.s.d.DiscoveryServiceApplication    : No active profile set, falling back to default profiles: default
+2019-03-21 23:07:37.373  INFO 4042 --- [restartedMain] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2bd10c49: startup date [Thu Mar 21 23:07:37 BRT 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@58f483e0
+2019-03-21 23:07:38.919  INFO 4042 --- [restartedMain] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53025f01-08a8-3a34-b1f9-d06e20236500
+2019-03-21 23:07:38.938  INFO 4042 --- [restartedMain] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-03-21 23:07:39.042  INFO 4042 --- [restartedMain] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$9a7c01c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-03-21 23:07:39.664  INFO 4042 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2019-03-21 23:07:39.686  INFO 4042 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-03-21 23:07:39.686  INFO 4042 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.32
+2019-03-21 23:07:39.691  INFO 4042 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/cleibson/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-03-21 23:07:39.798  INFO 4042 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-03-21 23:07:39.798  INFO 4042 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2425 ms
+2019-03-21 23:07:40.001  WARN 4042 --- [localhost-startStop-1] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-03-21 23:07:40.001  INFO 4042 --- [localhost-startStop-1] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-03-21 23:07:40.013  INFO 4042 --- [localhost-startStop-1] c.netflix.config.DynamicPropertyFactory  : DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@6a0d1d6f
+2019-03-21 23:07:41.144  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-03-21 23:07:41.145  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-03-21 23:07:41.145  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-03-21 23:07:41.145  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-03-21 23:07:41.145  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-03-21 23:07:41.145  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-03-21 23:07:41.146  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'servletContainer' to urls: [/eureka/*]
+2019-03-21 23:07:41.146  INFO 4042 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-03-21 23:07:41.222  INFO 4042 --- [localhost-startStop-1] c.s.j.s.i.a.WebApplicationImpl           : Initiating Jersey application, version 'Jersey: 1.19.1 03/11/2016 02:08 PM'
+2019-03-21 23:07:41.328  INFO 4042 --- [localhost-startStop-1] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-03-21 23:07:41.330  INFO 4042 --- [localhost-startStop-1] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-03-21 23:07:41.526  INFO 4042 --- [localhost-startStop-1] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-03-21 23:07:41.527  INFO 4042 --- [localhost-startStop-1] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-03-21 23:07:41.975  WARN 4042 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2019-03-21 23:07:41.975  INFO 4042 --- [restartedMain] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-03-21 23:07:42.073  INFO 4042 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-21 23:07:42.305  INFO 4042 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2bd10c49: startup date [Thu Mar 21 23:07:37 BRT 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@58f483e0
+2019-03-21 23:07:42.369  INFO 4042 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-03-21 23:07:42.371  INFO 4042 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-21 23:07:42.379  INFO 4042 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.status(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-21 23:07:42.380  INFO 4042 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/lastn],methods=[GET]}" onto public java.lang.String org.springframework.cloud.netflix.eureka.server.EurekaController.lastn(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.Object>)
+2019-03-21 23:07:42.415  INFO 4042 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-21 23:07:42.415  INFO 4042 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-03-21 23:07:42.888  INFO 4042 --- [restartedMain] o.s.ui.freemarker.SpringTemplateLoader   : SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2bd10c49: startup date [Thu Mar 21 23:07:37 BRT 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@58f483e0] and template loader path [classpath:/templates/]
+2019-03-21 23:07:42.889  INFO 4042 --- [restartedMain] o.s.w.s.v.f.FreeMarkerConfigurer         : ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-03-21 23:07:42.999  WARN 4042 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2019-03-21 23:07:43.214  INFO 4042 --- [restartedMain] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2019-03-21 23:07:43.261  INFO 4042 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2019-03-21 23:07:43.360  INFO 4042 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2019-03-21 23:07:43.360  INFO 4042 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2019-03-21 23:07:43.360  INFO 4042 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2019-03-21 23:07:43.360  INFO 4042 --- [restartedMain] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2019-03-21 23:07:43.479  INFO 4042 --- [restartedMain] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-03-21 23:07:43.501  INFO 4042 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2019-03-21 23:07:43.504  INFO 4042 --- [restartedMain] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-03-21 23:07:43.510  INFO 4042 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1553220463508 with initial instances count: 0
+2019-03-21 23:07:43.557  INFO 4042 --- [restartedMain] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2019-03-21 23:07:43.558  WARN 4042 --- [restartedMain] c.n.eureka.cluster.PeerEurekaNodes       : The replica size seems to be empty. Check the route 53 DNS Registry
+2019-03-21 23:07:43.567  INFO 4042 --- [restartedMain] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2019-03-21 23:07:43.568  INFO 4042 --- [restartedMain] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2019-03-21 23:07:43.590  INFO 4042 --- [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-03-21 23:07:43.604  INFO 4042 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-03-21 23:07:43.605  INFO 4042 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-03-21 23:07:43.606  INFO 4042 --- [restartedMain] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-03-21 23:07:43.675  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-03-21 23:07:43.687  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2019-03-21 23:07:43.691  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2019-03-21 23:07:43.692  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2019-03-21 23:07:43.696  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2019-03-21 23:07:43.711  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2019-03-21 23:07:43.727  INFO 4042 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=2bd10c49,type=ConfigurationPropertiesRebinder]
+2019-03-21 23:07:43.747  INFO 4042 --- [restartedMain] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 0
+2019-03-21 23:07:43.754  INFO 4042 --- [restartedMain] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application discovery-service with eureka with status UP
+2019-03-21 23:07:43.756  INFO 4042 --- [restartedMain] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1553220463756, current=UP, previous=STARTING]
+2019-03-21 23:07:43.758  INFO 4042 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_DISCOVERY-SERVICE/192.168.1.104:discovery-service:9091: registering service...
+2019-03-21 23:07:43.762  INFO 4042 --- [Thread-36] o.s.c.n.e.server.EurekaServerBootstrap   : Setting the eureka configuration..
+2019-03-21 23:07:43.763  INFO 4042 --- [Thread-36] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka data center value eureka.datacenter is not set, defaulting to default
+2019-03-21 23:07:43.765  INFO 4042 --- [Thread-36] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka environment value eureka.environment is not set, defaulting to test
+2019-03-21 23:07:43.785  INFO 4042 --- [Thread-36] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2019-03-21 23:07:43.786  INFO 4042 --- [Thread-36] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2019-03-21 23:07:43.840  INFO 4042 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2019-03-21 23:07:43.842  INFO 4042 --- [restartedMain] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 9091
+2019-03-21 23:07:43.848  INFO 4042 --- [restartedMain] c.n.m.s.d.DiscoveryServiceApplication    : Started DiscoveryServiceApplication in 9.479 seconds (JVM running for 10.843)
+2019-03-21 23:07:43.964  INFO 4042 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-03-21 23:07:43.965  INFO 4042 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2019-03-21 23:07:44.012  INFO 4042 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 47 ms
+2019-03-21 23:07:44.023  INFO 4042 --- [RMI TCP Connection(2)-192.168.1.104] c.c.c.ConfigServicePropertySourceLocator : Fetching config from server at : http://localhost:9090
+2019-03-21 23:07:44.113  INFO 4042 --- [http-nio-9091-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance DISCOVERY-SERVICE/192.168.1.104:discovery-service:9091 with status UP (replication=false)
+2019-03-21 23:07:44.134  INFO 4042 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_DISCOVERY-SERVICE/192.168.1.104:discovery-service:9091 - registration status: 204
+2019-03-21 23:07:44.731  INFO 4042 --- [RMI TCP Connection(2)-192.168.1.104] c.c.c.ConfigServicePropertySourceLocator : Located environment: name=discovery-service, profiles=[default], label=null, version=beb64fdfeeee5300d3ec7edfbe31e83558fc33ee, state=null
+2019-03-21 23:08:10.736  INFO 4042 --- [http-nio-9091-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance GATEWAY-SERVICE/192.168.1.104:gateway-service:9092 with status UP (replication=false)
+2019-03-21 23:09:43.791  INFO 4042 --- [Thread-36] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2019-03-21 23:09:43.791  INFO 4042 --- [Thread-36] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2019-03-21 23:09:43.792  INFO 4042 --- [Thread-36] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2019-03-21 23:09:43.800  INFO 4042 --- [Thread-36] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2019-03-21 23:10:43.795  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2019-03-21 23:11:43.795  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:12:43.753  INFO 4042 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-03-21 23:12:43.796  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:13:43.798  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2019-03-21 23:14:43.801  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2019-03-21 23:15:43.803  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2019-03-21 23:16:43.803  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:17:43.543  WARN 4042 --- [Eureka-PeerNodesUpdater] c.n.eureka.cluster.PeerEurekaNodes       : The replica size seems to be empty. Check the route 53 DNS Registry
+2019-03-21 23:17:43.745  INFO 4042 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-03-21 23:17:43.804  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:18:43.804  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:19:43.804  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2019-03-21 23:20:43.807  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2019-03-21 23:21:00.215  INFO 4042 --- [http-nio-9091-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ADMIN-SERVICE/192.168.1.104:admin-service:9094 with status UP (replication=false)
+2019-03-21 23:21:02.340  INFO 4042 --- [http-nio-9091-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ADMIN-SERVICE/192.168.1.104:admin-service:9094 with status DOWN (replication=false)
+2019-03-21 23:21:17.273  INFO 4042 --- [http-nio-9091-exec-9] c.n.e.registry.AbstractInstanceRegistry  : Registered instance ADMIN-SERVICE/192.168.1.104:admin-service:9094 with status UP (replication=false)
+2019-03-21 23:21:43.809  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2019-03-21 23:22:43.571  INFO 4042 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 3
+2019-03-21 23:22:43.739  INFO 4042 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2019-03-21 23:22:43.812  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2019-03-21 23:23:43.813  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2019-03-21 23:24:43.813  INFO 4042 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms

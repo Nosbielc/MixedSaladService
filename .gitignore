@@ -24,3 +24,8 @@
 /.nb-gradle/
 /build/
 auth-service.log
+*.log
+*.gz
+*.log
+*.log
+bancocentral-app.mv.db

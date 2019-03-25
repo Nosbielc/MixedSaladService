@@ -1,6 +1,5 @@
 package com.nosbielc.mixed.salad.bancocentral.controllers.utils;
 
-import br.com.banco.unidos.bancocentral.dtos.*;
 import com.nosbielc.mixed.salad.bancocentral.response.Content;
 import com.nosbielc.mixed.salad.bancocentral.response.Response;
 import com.nosbielc.mixed.salad.bancocentral.dtos.NovoTokenDto;

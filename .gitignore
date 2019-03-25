@@ -29,3 +29,6 @@ auth-service.log
 *.log
 *.log
 bancocentral-app.mv.db
+*.db
+*.log
+*.log

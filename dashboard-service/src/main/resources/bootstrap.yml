@@ -1,0 +1,34 @@
+#spring:
+#  application:
+#    name: dashboard-service
+#  cloud:
+#    boot:
+#      admin:
+#        client:
+#          url: http://localhost:9094/admin
+#          username: "user"
+#          password: "password"
+##  cloud:
+##    config:
+##      uri: http://localhost:9090
+#info:
+#  app:
+#    name: "Dashborad Service"
+#    description: "Dashboard Service - Aplicação de dashboard dos servicos."
+#    version: "1.0.0.06052019"
+#    encoding: "UTF-8"
+#    java:
+#      version: "1.8"
+#ms-dashboard:
+#  security:
+#    basic:
+#      client:
+#        password: "user"
+#        username: "password"
+#
+#  cache:
+#    evict: true
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:9091/eureka/

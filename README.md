@@ -8,6 +8,7 @@
  
   * Service Discovery
   * Register Service
+  * Zipkin Service DashBoard
   * Circuit Breaker²
   * Metrics Dashboard (Admin Server)
   * Load balance

@@ -13,6 +13,8 @@ spring:
           url: http://localhost:9094/admin
           username: "user"
           password: "password"
+  zipkin:
+    base-url: http://localhost:9095/
 
 logging:
   pattern:

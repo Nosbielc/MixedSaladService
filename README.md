@@ -40,5 +40,12 @@
 
  ### Images
  
- ##### DashBoard Admin-Service
+ ##### DashBoard Admin-Service (http://localhost:9094/admin)
  ![](images/DashBoardAdmin.png)
+ 
+ ##### DashBoard Zipkin-Service (http://localhost:9095/zipkin/)
+ ![](images/DashBoardZipkin.PNG)
+ 
+ ##### DashBoard eureka-Service (http://localhost:9091)
+  ![](images/DashBoardEureka.PNG)
+    

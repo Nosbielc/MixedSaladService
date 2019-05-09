@@ -23,10 +23,13 @@
         <module>admin-service</module>
         <module>auth-service</module>
         <module>dashboard-service</module>
+        <module>zipkin-service</module>
+        <module>oauth-service</module>
 
         <module>banco-central-service</module>
-    </modules>
 
+    </modules>
+s
     <dependencyManagement>
         <dependencies>
             <dependency>

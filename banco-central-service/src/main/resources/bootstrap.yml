@@ -6,3 +6,14 @@ spring:
       uri: http://localhost:9090
 pagination:
   qtd_by_page: 100
+#management:
+#  metrics:
+#    export:
+#      elastic:
+#        # You will probably want disable Elastic publishing in a local development profile.
+#        enabled: true
+#        # The interval at which metrics are sent to Elastic. The default is 1 minute.
+#        step: 1m
+#        # The index to store metrics in, defaults to "metrics"
+#        index: metrics
+#        host: http://localhost:9200

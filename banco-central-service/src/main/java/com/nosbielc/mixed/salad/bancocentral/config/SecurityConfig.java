@@ -17,6 +17,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
 
 //        http.authorizeRequests()
+//                .antMatchers("/actuator/health").permitAll().anyRequest().authenticated();
+//        http.headers().frameOptions().disable();
+
+//        http.authorizeRequests()
 //                .requestMatchers(EndpointRequest.to(ShutdownEndpoint.class))
 //                .hasRole("ADMIN")
 //                .requestMatchers(EndpointRequest.to(
@@ -26,6 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .fullyAuthenticated()
 //                .and().httpBasic();
 
-        http.headers().frameOptions().disable();
+//        http.headers().frameOptions().disable();
     }
 }

@@ -1,0 +1,11 @@
+Links
+
+http://127.0.0.1:9094/admin#/wallboard
+http://127.0.0.1:9091/
+http://127.0.0.1:9095/zipkin/
+
+
+https://hub.docker.com/r/nshou/elasticsearch-kibana/
+
+docker run -d --name KibanaMixedSalad -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
+docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk-MixedSalad sebp/elk

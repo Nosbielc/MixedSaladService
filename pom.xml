@@ -24,7 +24,6 @@
         <module>auth-service</module>
         <module>dashboard-service</module>
         <module>zipkin-service</module>
-        <module>oauth-service</module>
 
         <module>banco-central-service</module>
 
@@ -70,7 +69,7 @@ s
             <!--<artifactId>docker-maven-plugin</artifactId>-->
             <!--<version>1.1.1</version>-->
             <!--<configuration>-->
-            <!--<imageName>${project.name}</imageName>-->
+            <!--<imageName>nosbielc/${project.name}</imageName>-->
             <!--<baseImage>openjdk:8-jre-alpine</baseImage>-->
             <!--<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>-->
             <!--<exposes>8088</exposes>-->

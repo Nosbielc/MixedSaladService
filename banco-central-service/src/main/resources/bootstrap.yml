@@ -6,14 +6,23 @@ spring:
       uri: http://localhost:9090
 pagination:
   qtd_by_page: 100
-#management:
-#  metrics:
-#    export:
-#      elastic:
-#        # You will probably want disable Elastic publishing in a local development profile.
-#        enabled: true
-#        # The interval at which metrics are sent to Elastic. The default is 1 minute.
-#        step: 1m
-#        # The index to store metrics in, defaults to "metrics"
-#        index: metrics
-#        host: http://localhost:9200
+range:
+  port:
+    min: 8001
+    max: 8100
+app:
+  #random int
+  location-x: ${random.int}
+  location-y: ${random.int}
+  #random int with max
+  user-age: ${random.int(100)}
+  #random int range
+  max-users: ${random.int[1,10000]}
+  #random long with max
+  refresh-rate-milli: ${random.long(1000000)}
+  #random long range
+  initial-delay-milli: ${random.long[100,90000000000000000]}
+  #random 32 bytes
+  user-password: ${random.value}
+  #random uuid. Uses java.util.UUID.randomUUID()
+  instance-id: ${random.uuid}

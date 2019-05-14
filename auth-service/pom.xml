@@ -92,13 +92,15 @@
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
-            <version>RELEASE</version>
+            <version>1.0.6</version>
+<!--            <version>RELEASE</version>-->
         </dependency>
 
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>RELEASE</version>
+            <version>1.5.4</version>
+<!--            <version>RELEASE</version>-->
         </dependency>
 
         <dependency>

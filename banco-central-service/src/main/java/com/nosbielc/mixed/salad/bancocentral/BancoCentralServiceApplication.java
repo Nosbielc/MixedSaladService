@@ -1,5 +1,7 @@
 package com.nosbielc.mixed.salad.bancocentral;
 
+import com.nosbielc.mixed.salad.bancocentral.componentes.ServerPortCustomizer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -18,6 +20,7 @@ import java.util.TimeZone;
 public class BancoCentralServiceApplication {
 
     public static void main(String[] args) {
+        ServerPortCustomizer.setRandomPort();
         SpringApplication.run(BancoCentralServiceApplication.class, args);
     }
 

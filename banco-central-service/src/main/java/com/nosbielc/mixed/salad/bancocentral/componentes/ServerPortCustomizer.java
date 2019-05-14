@@ -17,14 +17,18 @@ public class ServerPortCustomizer
     private static final Logger log = LoggerFactory.getLogger(ServerPortCustomizer.class);
 
     @Value("${range.port.min}")
-    private int rangePortMin;
+    private static int rangePortMin;
 
     @Value("${range.port.max}")
-    private int rangePortMax;
+    private static int rangePortMax;
 
     @Override
     public void customize(ConfigurableWebServerFactory factory) {
-        factory.setPort(getRandomPort(rangePortMin, rangePortMax));
+//        factory.setPort(getRandomPort(rangePortMin, rangePortMax));
+    }
+
+    public static void setRandomPort() {
+        setRandomPort(8001, 8020);
     }
 
     private static void setRandomPort(int minPort, int maxPort) {

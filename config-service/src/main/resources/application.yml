@@ -1,11 +1,11 @@
 server:
   port: 9090
 
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/config-service.log
+
 spring:
-#  profiles:
-#    active: native
-  cloud:
-    config:
-      server:
-        git:
-          uri: https://github.com/Nosbielc/MixedSaladServiceConfig
+  profiles:
+    active: @spring.profiles.active@

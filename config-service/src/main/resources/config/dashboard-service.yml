@@ -1,0 +1,23 @@
+server:
+  port: 9095
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:9091/eureka/
+
+spring:
+  application:
+    name: dashboard-service
+  cloud:
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password" 
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/dashboard-service.log

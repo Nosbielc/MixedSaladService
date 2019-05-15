@@ -7,6 +7,10 @@ spring:
   application:
     name: config-service
   cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Nosbielc/MixedSaladServiceConfig
     boot:
       admin:
         client:
@@ -15,8 +19,3 @@ spring:
           password: "password"
   zipkin:
     base-url: http://localhost:9095/
-
-logging:
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
-  file: logs/config-service.log

@@ -28,7 +28,7 @@
         <module>banco-central-service</module>
 
     </modules>
-s
+
     <dependencyManagement>
         <dependencies>
             <dependency>

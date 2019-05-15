@@ -1,0 +1,69 @@
+server:
+  port: 9092
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:9091/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/gateway-service.log
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    jmx:
+      enabled: true
+  health:
+    mongo:
+      enabled: false
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: admin-service
+          uri: lb://admin-service
+          predicates:
+            - Path=/admin/**
+          filters:
+            - RewritePath=/admin/(?<path>.*), /$\{path}
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/oauth/**
+          filters:
+            - RewritePath=/oauth/(?<path>.*), /$\{path}
+        - id: banco-central-service
+          uri: lb://banco-central-service
+          predicates:
+            - Path=/bc/**
+          filters:
+            - RewritePath=/bc/(?<path>.*), /$\{path}
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password"
+  zipkin:
+    base-url: http://zipkin-service:9095/

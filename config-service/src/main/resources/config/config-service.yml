@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:9091/eureka/
+
+spring:
+  application:
+    name: config-service
+  cloud:
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password"
+  zipkin:
+    base-url: http://zipkin-service:9095/

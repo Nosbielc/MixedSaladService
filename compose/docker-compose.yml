@@ -1,32 +1,20 @@
 version: '3'
-volumes:
-  adminData:
-  authData:
-  bancoCentralData:
-  configData:
-  discoveryData:
-  gatewayData:
-networks:
-  layerOne:
 services:
   config-service:
     image: nosbielc/config-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9090:9090
   admin-service:
     image: nosbielc/admin-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9094:9094
     depends_on:
       - config-service
   discovery-service:
     image: nosbielc/discovery-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9091:9091
     depends_on:
@@ -34,8 +22,7 @@ services:
       - admin-service
   gateway-service:
     image: nosbielc/gateway-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9092:9092
     depends_on:
@@ -44,8 +31,7 @@ services:
       - discovery-service
   zipkin-service:
     image: nosbielc/zipkin-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9095:9095
     depends_on:
@@ -55,8 +41,7 @@ services:
       - gateway-service
   auth-service:
     image: nosbielc/auth-service
-    networks:
-      - layerOne
+    network: host
     ports:
       - 9093:9093
     depends_on:
@@ -67,10 +52,7 @@ services:
       - zipkin-service
   banco-central-service:
     image: nosbielc/banco-central-service
-    networks:
-      - layerOne
-    ports:
-      - 8001:8001
+    network: host
     depends_on:
       - config-service
       - admin-service

@@ -9,3 +9,5 @@ https://hub.docker.com/r/nshou/elasticsearch-kibana/
 
 docker run -d --name KibanaMixedSalad -p 9200:9200 -p 5601:5601 nshou/elasticsearch-kibana
 docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk-MixedSalad sebp/elk
+
+docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=dev" --name rest-api dockerImage:latest

@@ -1,63 +1,93 @@
 version: '3'
+
+networks:
+  msConfig:
+  msAdmin:
+
 services:
+
   config-service:
-    image: nosbielc/config-service
-    network: host
+    image: nosbielc/config-service:latest
+    networks:
+      - msConfig
+      - msAdmin
     ports:
       - 9090:9090
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod,native
+    restart: on-failure
+
   admin-service:
-    image: nosbielc/admin-service
-    network: host
+    image: nosbielc/admin-service:latest
+    networks:
+      - msConfig
+      - msAdmin
     ports:
       - 9094:9094
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    restart: on-failure
     depends_on:
       - config-service
-  discovery-service:
-    image: nosbielc/discovery-service
-    network: host
-    ports:
-      - 9091:9091
-    depends_on:
-      - config-service
-      - admin-service
-  gateway-service:
-    image: nosbielc/gateway-service
-    network: host
-    ports:
-      - 9092:9092
-    depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-  zipkin-service:
-    image: nosbielc/zipkin-service
-    network: host
-    ports:
-      - 9095:9095
-    depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-  auth-service:
-    image: nosbielc/auth-service
-    network: host
-    ports:
-      - 9093:9093
-    depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-      - zipkin-service
-  banco-central-service:
-    image: nosbielc/banco-central-service
-    network: host
-    depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-      - zipkin-service
-      - auth-service
+    links:
+      - config-service:config-service
+    command: config-service:9090
+#  discovery-service:
+#    image: nosbielc/discovery-service:latest
+#    network_mode: host
+#    ports:
+#      - 9091:9091
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod
+#    depends_on:
+#      - config-service
+#      - admin-service
+#  gateway-service:
+#    image: nosbielc/gateway-service:latest
+#    network_mode: host
+#    ports:
+#      - 9092:9092
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod
+#    depends_on:
+#      - config-service
+#      - admin-service
+#      - discovery-service
+#  zipkin-service:
+#    image: nosbielc/zipkin-service:latest
+#    network_mode: host
+#    ports:
+#      - 9095:9095
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod
+#    depends_on:
+#      - config-service
+#      - admin-service
+#      - discovery-service
+#      - gateway-service
+#  auth-service:
+#    image: nosbielc/auth-service:latest
+#    network_mode: host
+#    ports:
+#      - 9093:9093
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod
+#    depends_on:
+#      - config-service
+#      - admin-service
+#      - discovery-service
+#      - gateway-service
+#      - zipkin-service
+#  banco-central-service:
+#    image: nosbielc/banco-central-service:latest
+#    network_mode: host
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=prod
+#    depends_on:
+#      - config-service
+#      - admin-service
+#      - discovery-service
+#      - gateway-service
+#      - zipkin-service
+#      - auth-service
 

@@ -9,7 +9,7 @@ server:
 eureka:
   datacenter: MixedSalad
   instance:
-    hostname: localhost
+    hostname: discovery-service
   client:
     registerWithEureka: true
     fetchRegistry: false

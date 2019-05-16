@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery-service
     port: 9091
     health-check-url-path: /actuator/health
     metadata-map:

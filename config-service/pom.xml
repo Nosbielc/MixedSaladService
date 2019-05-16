@@ -107,6 +107,10 @@
                 <configuration>
                     <imageName>nosbielc/${project.name}</imageName>
                     <baseImage>openjdk:8-jre-alpine</baseImage>
+                    <imageTags>
+                        <imageTag>${project.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <exposes>9090</exposes>
                     <resources>
@@ -131,7 +135,6 @@
                 </configuration>
             </plugin>
         </plugins>
-
 
         <resources>
             <resource>
@@ -158,6 +161,5 @@
             </properties>
         </profile>
     </profiles>
-
 
 </project>

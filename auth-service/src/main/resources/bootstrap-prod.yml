@@ -2,10 +2,10 @@ spring:
   application:
     name: auth-service
   profiles:
-    active: dev
+    active: prod
   cloud:
     config:
-      uri: http://localhost:9090
+      uri: http://config-service:9090
 
 info:
   app:

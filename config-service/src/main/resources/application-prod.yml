@@ -5,7 +5,12 @@ eureka:
 
 spring:
   profiles:
-    active: prod,native
+    active: prod
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Nosbielc/MixedSaladServiceConfig
   application:
     name: config-service
     boot:

@@ -1,7 +1,5 @@
 package com.nosbielc.mixed.salad.bancocentral;
 
-import com.nosbielc.mixed.salad.bancocentral.componentes.ServerPortCustomizer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -11,6 +9,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -19,8 +18,9 @@ import java.util.TimeZone;
 @EnableCircuitBreaker
 public class BancoCentralServiceApplication {
 
-    public static void main(String[] args) {
-        ServerPortCustomizer.setRandomPort();
+    public static void main(String[] args) throws Exception {
+        TimeUnit.SECONDS.sleep(30);
+//        ServerPortCustomizer.setRandomPort(); // comentado para evitar erro de portas no docker-compose
         SpringApplication.run(BancoCentralServiceApplication.class, args);
     }
 

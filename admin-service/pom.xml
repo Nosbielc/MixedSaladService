@@ -153,11 +153,19 @@
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <exposes>9094</exposes>
                     <resources>
+
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
+
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>../compose</directory>
+                            <include>wait</include>
+                        </resource>
+
                     </resources>
                 </configuration>
             </plugin>

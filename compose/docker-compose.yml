@@ -1,26 +1,14 @@
 version: '3'
 
 networks:
-  msConfig:
-  msAdmin:
-  msDiscovery:
-  msBancoCentral:
-  msAuth:
-  msGateway:
-  msZipkin:
+  msNet:
 
 services:
 
   config-service:
     image: nosbielc/config-service:latest
     networks:
-    - msConfig
-    - msAdmin
-    - msDiscovery
-    - msBancoCentral
-    - msAuth
-    - msGateway
-    - msZipkin
+    - msNet
     ports:
       - 9090:9090
     environment:
@@ -35,13 +23,7 @@ services:
   admin-service:
     image: nosbielc/admin-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
     ports:
       - 9094:9094
     environment:
@@ -53,13 +35,7 @@ services:
   discovery-service:
     image: nosbielc/discovery-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
     ports:
       - 9091:9091
     environment:
@@ -72,13 +48,7 @@ services:
   gateway-service:
     image: nosbielc/gateway-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
     ports:
       - 9092:9092
     environment:
@@ -92,13 +62,7 @@ services:
   zipkin-service:
     image: nosbielc/zipkin-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
     ports:
       - 9095:9095
     environment:
@@ -113,35 +77,19 @@ services:
   auth-service:
     image: nosbielc/auth-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
     ports:
       - 9093:9093
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: on-failure
     depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-      - zipkin-service
+      - msNet
 
   banco-central-service:
     image: nosbielc/banco-central-service:latest
     networks:
-      - msConfig
-      - msAdmin
-      - msDiscovery
-      - msBancoCentral
-      - msAuth
-      - msGateway
-      - msZipkin
+      - msNet
 #    ports:
 #      - "8001-8020"
     environment:
@@ -154,4 +102,3 @@ services:
       - gateway-service
       - zipkin-service
       - auth-service
-

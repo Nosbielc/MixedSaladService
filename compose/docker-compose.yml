@@ -84,7 +84,11 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: on-failure
     depends_on:
-      - msNet
+      - config-service
+      - admin-service
+      - discovery-service
+      - gateway-service
+      - zipkin-service
 
   banco-central-service:
     image: nosbielc/banco-central-service:latest

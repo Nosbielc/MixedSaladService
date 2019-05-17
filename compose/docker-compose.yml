@@ -142,8 +142,8 @@ services:
       - msAuth
       - msGateway
       - msZipkin
-    ports:
-      - "8001-8020"
+#    ports:
+#      - "8001-8020"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: on-failure

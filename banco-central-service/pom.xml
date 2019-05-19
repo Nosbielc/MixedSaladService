@@ -198,7 +198,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>nosbielc/${project.name}</imageName>
+                    <imageName>nosbielc/mixed-salad-${project.name}</imageName>
                     <baseImage>openjdk:8-jre-alpine</baseImage>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>

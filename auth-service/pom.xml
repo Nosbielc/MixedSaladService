@@ -5,7 +5,7 @@
 
     <groupId>com.nosbielc.mixed.salad</groupId>
     <artifactId>auth-service</artifactId>
-    <version>1.0.0.12052019</version>
+    <version>1.1.0.19052019</version>
     <name>auth-service</name>
     <description>Spring Boot Auth 2.0 Service</description>
 
@@ -132,7 +132,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.1.1</version>
                 <configuration>
-                    <imageName>nosbielc/${project.name}</imageName>
+                    <imageName>nosbielc/mixed-salad-${project.name}</imageName>
                     <baseImage>openjdk:8-jre-alpine</baseImage>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>

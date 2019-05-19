@@ -6,22 +6,22 @@ networks:
 services:
 
   config-service:
-    image: nosbielc/config-service:latest
+    image: nosbielc/mixed-salad-config-service:latest
     networks:
     - msNet
     ports:
       - 9090:9090
     environment:
-      - SPRING_PROFILES_ACTIVE=prod,native
+      - SPRING_PROFILES_ACTIVE=prod
     restart: always
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:9090"]
-      interval: 2s
-      timeout: 5s
-      retries: 30
+#    healthcheck:
+#      test: ["CMD", "curl", "--fail", "http://localhost:9090"]
+#      interval: 2s
+#      timeout: 5s
+#      retries: 30
 
   admin-service:
-    image: nosbielc/admin-service:latest
+    image: nosbielc/mixed-salad-admin-service:latest
     networks:
       - msNet
     ports:
@@ -33,7 +33,7 @@ services:
       - config-service
 
   discovery-service:
-    image: nosbielc/discovery-service:latest
+    image: nosbielc/mixed-salad-discovery-service:latest
     networks:
       - msNet
     ports:
@@ -46,7 +46,7 @@ services:
       - admin-service
 
   gateway-service:
-    image: nosbielc/gateway-service:latest
+    image: nosbielc/mixed-salad-gateway-service:latest
     networks:
       - msNet
     ports:
@@ -60,7 +60,7 @@ services:
       - discovery-service
 
   zipkin-service:
-    image: nosbielc/zipkin-service:latest
+    image: nosbielc/mixed-salad-zipkin-service:latest
     networks:
       - msNet
     ports:
@@ -75,7 +75,7 @@ services:
       - gateway-service
 
   auth-service:
-    image: nosbielc/auth-service:latest
+    image: nosbielc/mixed-salad-auth-service:latest
     networks:
       - msNet
     ports:
@@ -91,7 +91,7 @@ services:
       - zipkin-service
 
   banco-central-service:
-    image: nosbielc/banco-central-service:latest
+    image: nosbielc/mixed-salad-banco-central-service:latest
     networks:
       - msNet
 #    ports:

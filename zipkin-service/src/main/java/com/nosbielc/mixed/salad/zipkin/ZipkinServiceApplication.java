@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class ZipkinServiceApplication {
 
     public static void main(String[] args) throws Exception {
-        TimeUnit.SECONDS.sleep(30);
+        //TimeUnit.SECONDS.sleep(30);
         SpringApplication.run(ZipkinServiceApplication.class, args);
     }
 

@@ -13,7 +13,7 @@ services:
       - 9090:9090
     environment:
       - SPRING_PROFILES_ACTIVE=prod,native
-    restart: on-failure
+    restart: always
     healthcheck:
       test: ["CMD", "curl", "--fail", "http://localhost:9090"]
       interval: 2s
@@ -28,7 +28,7 @@ services:
       - 9094:9094
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
 
@@ -40,7 +40,7 @@ services:
       - 9091:9091
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
       - admin-service
@@ -53,7 +53,7 @@ services:
       - 9092:9092
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
       - admin-service
@@ -67,7 +67,7 @@ services:
       - 9095:9095
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
       - admin-service
@@ -82,7 +82,7 @@ services:
       - 9093:9093
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
       - admin-service
@@ -98,7 +98,7 @@ services:
 #      - "8001-8020"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-    restart: on-failure
+    restart: always
     depends_on:
       - config-service
       - admin-service

@@ -12,4 +12,4 @@ docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk-MixedSalad sebp
 
 docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=dev" --name rest-api dockerImage:latest
 
-docker-compose up --scale banco-central-service=3 -d
+docker-compose up --scale banco-central-service=2 -d

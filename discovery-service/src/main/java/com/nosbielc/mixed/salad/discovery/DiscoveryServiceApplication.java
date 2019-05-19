@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class DiscoveryServiceApplication {
 
     public static void main(String[] args) throws Exception {
-        TimeUnit.SECONDS.sleep(30);
+        //TimeUnit.SECONDS.sleep(30);
         SpringApplication.run(DiscoveryServiceApplication.class, args);
     }
 

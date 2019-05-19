@@ -1,5 +1,6 @@
 package com.nosbielc.mixed.salad.bancocentral;
 
+import com.nosbielc.mixed.salad.bancocentral.componentes.ServerPortCustomizer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -19,8 +20,8 @@ import java.util.concurrent.TimeUnit;
 public class BancoCentralServiceApplication {
 
     public static void main(String[] args) throws Exception {
-        TimeUnit.SECONDS.sleep(30);
-//        ServerPortCustomizer.setRandomPort(); // comentado para evitar erro de portas no docker-compose
+        //TimeUnit.SECONDS.sleep(30);
+        ServerPortCustomizer.setRandomPort(); // comentado para evitar erro de portas no docker-compose
         SpringApplication.run(BancoCentralServiceApplication.class, args);
     }
 

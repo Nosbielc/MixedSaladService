@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
+import java.util.StringJoiner;
 
 @Service
 public class CircuitBreakerService {
@@ -19,6 +20,7 @@ public class CircuitBreakerService {
     }
 
     public String reliable() {
-        return "CircuitBreaker Executado, mostrando uma mensagem padrão";
+        return String.format("Instancia %s - %s", System.getenv("INSTANCE_NAME"),
+                "CircuitBreaker Executado, mostrando uma mensagem padrão");
     }
 }

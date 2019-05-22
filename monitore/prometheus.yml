@@ -1,0 +1,63 @@
+# my global config
+global:
+  scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+# - "first_rules.yml"
+# - "second_rules.yml"
+
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: 'prometheus'
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+    static_configs:
+      - targets: ['192.168.0.128:7000']
+
+#  - job_name: 'spring-actuator-balancer'
+#    metrics_path: 'bc/actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['192.168.0.128:9092']
+#      #- targets: ['HOST_IP:9092']
+
+  - job_name: 'spring-actuator-inst-01'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8010']
+
+  - job_name: 'spring-actuator-inst-02'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8005']
+
+  - job_name: 'spring-actuator-inst-03'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8014']
+
+  - job_name: 'spring-actuator-inst-04'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8006']
+
+  - job_name: 'spring-actuator-inst-05'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8001']
+
+  - job_name: 'spring-actuator-inst-06'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['192.168.0.128:8019']

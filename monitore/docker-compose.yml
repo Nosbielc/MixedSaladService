@@ -1,0 +1,29 @@
+version: '3'
+
+networks:
+  msMonitore:
+
+services:
+
+  prometheus-service:
+    image: prom/prometheus
+    networks:
+      - msMonitore
+    ports:
+      - 7000:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    environment:
+      - config.file=/etc/prometheus/prometheus.yml
+    restart: always
+
+  grafana-service:
+    image: grafana/grafana
+    networks:
+      - msMonitore
+    ports:
+      - 7001:3000
+    restart: always
+    depends_on:
+      - prometheus-service
+    #Veja o link https://grafana.com/dashboards/6756 para saber mais sobre o plugin indicado

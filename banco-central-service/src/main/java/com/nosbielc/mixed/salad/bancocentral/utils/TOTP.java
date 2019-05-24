@@ -18,8 +18,10 @@ public class TOTP {
 
     private static final Logger log = LoggerFactory.getLogger(TOTP.class);
 
+    private static Boolean isHabilitarLoop = Boolean.TRUE;
+
     public static void main(String... args) throws Exception {
-        while (true)
+        while (isHabilitarLoop)
             new TOTP().teste();
     }
 

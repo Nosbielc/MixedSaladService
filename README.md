@@ -1,3 +1,12 @@
+[![Build Status](https://travis-ci.org/Nosbielc/MixedSaladService.svg?branch=master)](https://travis-ci.org/Nosbielc/MixedSaladService)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.music.match:music-match&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.nosbielc.music.match:music-match)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=bugs)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=coverage)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=security_rating)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=ncloc)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
+
 # MixedSaladService
  Mixed Salad Project para desenvolvimento e estudo de tecnologias Java com Spring Boot.
  

@@ -1,6 +1,8 @@
 package com.nosbielc.mixed.salad.bancocentral.utils;
 
 import com.nosbielc.mixed.salad.bancocentral.utils.otp.TimeBasedOneTimePasswordGenerator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -13,6 +15,8 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class TOTP {
+
+    private static final Logger log = LoggerFactory.getLogger(TOTP.class);
 
     public static void main(String... args) throws Exception {
         while (true)
@@ -34,7 +38,7 @@ public class TOTP {
 
 //            System.out.println("MD5: " + hexa);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
 
 

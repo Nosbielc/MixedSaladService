@@ -26,6 +26,7 @@ public class BancoDto implements Serializable {
     private Boolean ativo;
 
     public BancoDto() {
+        this.codBanco = Long.MIN_VALUE;
     }
 
     public BancoDto(Long codBanco,

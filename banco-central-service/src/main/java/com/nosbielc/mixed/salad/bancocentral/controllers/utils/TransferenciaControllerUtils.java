@@ -61,7 +61,7 @@ public class TransferenciaControllerUtils {
                     Optional<TokenSeguranca> tokenSeguranca =
                             this.tokenSegurancaService.findByBancoAndStrConta(bancoOrigem.get(), transferenciaDto.getContaOrigem());
 
-                    if (SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(),
+                    if (tokenSeguranca.isPresent() && SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(),
                             transferenciaDto.getCode().intValue()) || Boolean.TRUE) {
                         String hashIdTransferencia =
                                 SecretKeyUtils.getHashTransferencia(

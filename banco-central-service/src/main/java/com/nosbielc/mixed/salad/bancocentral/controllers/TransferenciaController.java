@@ -41,17 +41,20 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
                                                                           String autenticacao, Long id) throws Exception {
         Response<Page<TransferenciaReponseDto>> response = new Response<>();
         PageRequest pageRequest = PageRequest.of(pag, this.fetchForPage, Sort.Direction.valueOf(dir), ord);
-        Page<Transferencia> transferencias= null;
+        Page<Transferencia> transferencias = Page.empty();
 
         if (!autenticacao.equalsIgnoreCase("")) {
             transferencias = this.trasnferenciaService.findOneAutenticacao(autenticacao, pageRequest);
         } else if (id > 0) {
-            transferencias = (Page<Transferencia>) (this.trasnferenciaService.findById(id)).get();
+            Optional<Transferencia> transTrat = this.trasnferenciaService.findById(id);
+            if (transTrat.isPresent()) {
+                transferencias = (Page<Transferencia>) transTrat.get();
+            }
         } else {
             transferencias = this.trasnferenciaService.findAllPageable(pageRequest);
         }
 
-        Page<TransferenciaReponseDto> transferenciaDtos = transferencias.map( trans -> toTransferenciaResponseDto(trans));
+        Page<TransferenciaReponseDto> transferenciaDtos = transferencias.map(TransferenciaControllerUtils::toTransferenciaResponseDto);
 
         response.setData(transferenciaDtos);
 
@@ -74,7 +77,7 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
     @PostMapping
     public ResponseEntity<Response<Content<TransferenciaReponseDto>>> criar(@Valid @RequestBody TransferenciaDto transferenciaDto,
                                                                    BindingResult result) throws Exception {
-        log.info("Registrando a nova Transação: {}", transferenciaDto.toString());
+        log.info("Registrando a nova Transação: {}", transferenciaDto);
         return ResponseEntity.ok(criaTransferencia(transferenciaDto));
     }
 }

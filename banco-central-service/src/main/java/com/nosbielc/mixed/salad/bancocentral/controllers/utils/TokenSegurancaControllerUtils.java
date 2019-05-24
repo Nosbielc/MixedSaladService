@@ -69,10 +69,16 @@ public class TokenSegurancaControllerUtils {
             Optional<TokenSeguranca> tokenSeguranca =
                     this.tokenSegurancaService.findByBancoAndStrConta(banco.get(), validaTokenDto.getStrConta());
 
-            if(SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(), validaTokenDto.getCode().intValue())) {
-                response.setData("Codigo inserido é valido e foi gerado de uma semente segura. :)");
+            if (tokenSeguranca.isPresent()) {
+
+                if (SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(), validaTokenDto.getCode().intValue())) {
+                    response.setData("Codigo inserido é valido e foi gerado de uma semente segura. :)");
+                } else {
+                    response.setData("Codigo inserido é invalido, solicite um novo token ou tente novamente. :(");
+                }
+
             } else {
-                response.setData("Codigo inserido é invalido, solicite um novo token ou tente novamente. :(");
+                response.setData("Erro ao buscar Token na base dados. :(");
             }
 
         } else {

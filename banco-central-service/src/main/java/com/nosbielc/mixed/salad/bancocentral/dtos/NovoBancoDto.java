@@ -21,6 +21,7 @@ public class NovoBancoDto implements Serializable {
     private String strNome;
 
     public NovoBancoDto() {
+        this.codBanco = Long.MIN_VALUE;
     }
 
     public NovoBancoDto(Long codBanco, String strNomeBase,

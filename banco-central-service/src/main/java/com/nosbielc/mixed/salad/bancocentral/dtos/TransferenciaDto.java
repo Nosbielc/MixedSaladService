@@ -30,6 +30,9 @@ public class TransferenciaDto implements Serializable {
     public Long code;
 
     public TransferenciaDto() {
+        this.bancoOrigem = Long.MIN_VALUE;
+        this.bancoDestino = Long.MIN_VALUE;
+        this.code = Long.MIN_VALUE;
     }
 
     @Override

@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/Nosbielc/MixedSaladService.svg?branch=master)](https://travis-ci.org/Nosbielc/MixedSaladService)
-[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.music.match:music-match&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.nosbielc.music.match:music-match)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad:mixed-salad-service&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.nosbielc.mixed.salad:mixed-salad-service)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=bugs)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=coverage)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=com.nosbielc.mixed.salad%3Amixed-salad-service&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=com.nosbielc.mixed.salad%3Amixed-salad-service)

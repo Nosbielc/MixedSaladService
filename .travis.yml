@@ -12,13 +12,13 @@ script:
   # other script steps might be done before running the actual analysis
   #  - sonar-scanner
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-#  - /admin-service/mvn clean install
-#  - /auth-service/mvn clean install
-#  - /banco-central-service/mvn clean install
-#  - /config-service/mvn clean install
-#  - /discovery-service/mvn clean install
-#  - /gateway-service/mvn clean install
-#  - /zipkin-service/mvn clean install
+  - $HOME/admin-service/mvn clean install
+  - $HOME/auth-service/mvn clean install
+  - $HOME/banco-central-service/mvn clean install
+  - $HOME/config-service/mvn clean install
+  - $HOME/discovery-service/mvn clean install
+  - $HOME/gateway-service/mvn clean install
+  - $HOME/zipkin-service/mvn clean install
 
   # Sonar ex
   - /admin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar

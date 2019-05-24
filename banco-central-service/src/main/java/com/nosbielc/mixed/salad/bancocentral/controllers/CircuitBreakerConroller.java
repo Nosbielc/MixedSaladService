@@ -19,7 +19,7 @@ public class CircuitBreakerConroller {
     @Autowired
     CircuitBreakerService circuitBreakerService;
 
-    @GetMapping(value = "/circuitBreaker")
+    @GetMapping(value = "/circuitBreaker", produces = "application/json", consumes = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     public ResponseEntity<String> circuitBreaker() {
         logger.info("circuitBreaker called");

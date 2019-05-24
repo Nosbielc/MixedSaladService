@@ -1,0 +1,30 @@
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/banco-central-service-test.log
+
+spring:
+  application:
+    name: banco-central-service
+  profiles:
+    active: test
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    platform: h2
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        type: trace
+        jdbc:
+          time_zone: UTC-3

@@ -183,6 +183,11 @@
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -254,6 +259,14 @@
                 <spring.profiles.active>dev</spring.profiles.active>
             </properties>
         </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+
     </profiles>
 
 

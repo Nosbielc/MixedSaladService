@@ -5,16 +5,9 @@
 
     <groupId>com.nosbielc.mixed.salad</groupId>
     <artifactId>mixed-salad-service</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>MixedSaladService</name>
     <description>Mixed Salad Project for development and study of Java technologies.</description>
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
 
     <modules>
         <module>config-service</module>
@@ -29,59 +22,20 @@
 
     </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Finchley.SR1</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
-    </properties>
-
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
 
-            <!-- https://github.com/spotify/docker-maven-plugin -->
-            <!--<plugin>-->
-            <!--<groupId>com.spotify</groupId>-->
-            <!--<artifactId>docker-maven-plugin</artifactId>-->
-            <!--<version>1.1.1</version>-->
-            <!--<configuration>-->
-            <!--<imageName>nosbielc/mixed-salad-${project.name}</imageName>-->
-            <!--<baseImage>openjdk:8-jre-alpine</baseImage>-->
-            <!--<entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>-->
-            <!--<exposes>8088</exposes>-->
-            <!--<resources>-->
-            <!--<resource>-->
-            <!--<targetPath>/</targetPath>-->
-            <!--<directory>${project.build.directory}</directory>-->
-            <!--<include>${project.build.finalName}.jar</include>-->
-            <!--</resource>-->
-            <!--</resources>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>@</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                </configuration>
+            </plugin>
 
         </plugins>
     </build>

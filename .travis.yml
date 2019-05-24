@@ -12,22 +12,14 @@ script:
   # other script steps might be done before running the actual analysis
   #  - sonar-scanner
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - $HOME/admin-service/mvn clean install
-  - $HOME/auth-service/mvn clean install
-  - $HOME/banco-central-service/mvn clean install
-  - $HOME/config-service/mvn clean install
-  - $HOME/discovery-service/mvn clean install
-  - $HOME/gateway-service/mvn clean install
-  - $HOME/zipkin-service/mvn clean install
-
-  # Sonar ex
-  - /admin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /auth-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /banco-central-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /config-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /discovery-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /gateway-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
-  - /zipkin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /admin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /auth-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /banco-central-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /config-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /discovery-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /gateway-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+#  - /zipkin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 
 #  mvn sonar:sonar \
 #  -Dsonar.projectKey=Nosbielc_MixedSaladService \

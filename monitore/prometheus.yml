@@ -17,7 +17,7 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-      - targets: ['192.168.0.128:7000']
+      - targets: ['172.22.128.157:7000']
 
 #  - job_name: 'spring-actuator-balancer'
 #    metrics_path: 'bc/actuator/prometheus'
@@ -30,34 +30,34 @@ scrape_configs:
     metrics_path: 'actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['192.168.0.128:8010']
+      - targets: ['172.22.128.157:8009']
 
   - job_name: 'spring-actuator-inst-02'
     metrics_path: 'actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['192.168.0.128:8005']
+      - targets: ['172.22.128.157:8014']
 
-  - job_name: 'spring-actuator-inst-03'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['192.168.0.128:8014']
-
-  - job_name: 'spring-actuator-inst-04'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['192.168.0.128:8006']
-
-  - job_name: 'spring-actuator-inst-05'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['192.168.0.128:8001']
-
-  - job_name: 'spring-actuator-inst-06'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['192.168.0.128:8019']
+#  - job_name: 'spring-actuator-inst-03'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['192.168.0.128:8014']
+#
+#  - job_name: 'spring-actuator-inst-04'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['192.168.0.128:8006']
+#
+#  - job_name: 'spring-actuator-inst-05'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['192.168.0.128:8001']
+#
+#  - job_name: 'spring-actuator-inst-06'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['192.168.0.128:8019']

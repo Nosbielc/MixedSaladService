@@ -12,13 +12,13 @@ script:
   # other script steps might be done before running the actual analysis
   #  - sonar-scanner
   # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - /admin-service/mvn clean install
-  - /auth-service/mvn clean install
-  - /banco-central-service/mvn clean install
-  - /config-service/mvn clean install
-  - /discovery-service/mvn clean install
-  - /gateway-service/mvn clean install
-  - /zipkin-service/mvn clean install
+#  - /admin-service/mvn clean install
+#  - /auth-service/mvn clean install
+#  - /banco-central-service/mvn clean install
+#  - /config-service/mvn clean install
+#  - /discovery-service/mvn clean install
+#  - /gateway-service/mvn clean install
+#  - /zipkin-service/mvn clean install
 
   # Sonar ex
   - ./admin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
@@ -28,3 +28,9 @@ script:
   - ./discovery-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
   - ./gateway-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
   - ./zipkin-service/mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+
+#  mvn sonar:sonar \
+#  -Dsonar.projectKey=Nosbielc_MixedSaladService \
+#  -Dsonar.organization=nosbielc-github \
+#  -Dsonar.host.url=https://sonarcloud.io \
+#  -Dsonar.login=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -34,6 +34,14 @@ public class ValidaTokenDtoTest {
     }
 
     @Test
+    public void testToString()
+    {
+        assertEquals(
+                "ValidaTokenDto[strConta='str', bancoId=-9223372036854775808, code=-9223372036854775808]",
+                validaTokenDto.toString());
+    }
+
+    @Test
     public void getStrConta() {
         assertTrue(validaTokenDto.getStrConta().equalsIgnoreCase(STR));
     }

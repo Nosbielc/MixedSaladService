@@ -16,7 +16,7 @@ public class NovoTokenDto implements Serializable {
     @NotNull(message = "bancoId não pode ser null.")
     private Long bancoId;
 
-    public NovoTokenDto(String strToken, String strConta, Long bancoId) {
+    public NovoTokenDto(String strConta, Long bancoId) {
         this.strConta = strConta;
         this.bancoId = bancoId;
     }

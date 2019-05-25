@@ -17,13 +17,13 @@ import static org.junit.Assert.assertTrue;
 public class BancoDtoTest {
 
     @Test
-    public void testNovoBancoDto() {
+    public void testBancoDto() {
         BancoDto bancoDto = new BancoDto();
         assertTrue(Long.MIN_VALUE == bancoDto.getCodBanco());
     }
 
     @Test
-    public void testNovoBancoDtoComParametros() {
+    public void testBancoDtoComParametros() {
         BancoDto bancoDto = new BancoDto(Long.MIN_VALUE, "str", "str", Boolean.TRUE);
         assertTrue(Long.MIN_VALUE == bancoDto.getCodBanco());
         assertTrue("str".equalsIgnoreCase(bancoDto.getStrNomeBase()));
@@ -32,7 +32,7 @@ public class BancoDtoTest {
     }
 
     @Test
-    public void testNovoBancoDtoComOProprioObjeto() {
+    public void testBancoDtoComOProprioObjeto() {
         Banco banco = new Banco(Long.MIN_VALUE, "str", "str", Boolean.TRUE);
         BancoDto bancoDtoFull = new BancoDto(banco);
         assertTrue(Long.MIN_VALUE == bancoDtoFull.getCodBanco());

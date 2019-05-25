@@ -1,5 +1,6 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,33 +14,55 @@ import static org.junit.Assert.*;
 @ActiveProfiles("test")
 public class ValidaTokenDtoTest {
 
+    private static final String STR = "str";
+    private static final String STR_ATUALIZADO = "str-atualizado";
+
+
+    private ValidaTokenDto validaTokenDto;
+
+    @Before
+    public void initTest(){
+        validaTokenDto = new ValidaTokenDto(STR, Long.MIN_VALUE, Long.MIN_VALUE);
+    }
+
+    @Test
+    public void testValidaToken() {
+        assertNotNull(validaTokenDto);
+        assertTrue(validaTokenDto.getBancoId() == Long.MIN_VALUE);
+        assertTrue(validaTokenDto.getCode() == Long.MIN_VALUE);
+        assertTrue(validaTokenDto.getStrConta() == STR);
+    }
+
     @Test
     public void getStrConta() {
-        assertTrue(Boolean.TRUE);
+        assertTrue(validaTokenDto.getStrConta().equalsIgnoreCase(STR));
     }
 
     @Test
     public void setStrConta() {
-        assertTrue(Boolean.TRUE);
+        validaTokenDto.setStrConta(STR_ATUALIZADO);
+        assertTrue(validaTokenDto.getStrConta().equalsIgnoreCase(STR_ATUALIZADO));
     }
 
     @Test
     public void getBancoId() {
-        assertTrue(Boolean.TRUE);
+        assertTrue(validaTokenDto.getBancoId() == Long.MIN_VALUE);
     }
 
     @Test
     public void setBancoId() {
-        assertTrue(Boolean.TRUE);
+        validaTokenDto.setBancoId(1L);
+        assertTrue(validaTokenDto.getBancoId() == 1L);
     }
 
     @Test
     public void getCode() {
-        assertTrue(Boolean.TRUE);
+        assertTrue(validaTokenDto.getCode() == Long.MIN_VALUE);
     }
 
     @Test
     public void setCode() {
-        assertTrue(Boolean.TRUE);
+        validaTokenDto.setCode(2L);
+        assertTrue(validaTokenDto.getCode() == 2L);
     }
 }

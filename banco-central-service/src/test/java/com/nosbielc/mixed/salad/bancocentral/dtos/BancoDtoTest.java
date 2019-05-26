@@ -39,7 +39,6 @@ public class BancoDtoTest {
 
     @Test
     public void testBancoDtoComOProprioObjeto() {
-
         BancoDto bancoDtoFull = new BancoDto(banco);
         assertTrue(Long.MIN_VALUE == bancoDtoFull.getCodBanco());
         assertTrue("str".equalsIgnoreCase(bancoDtoFull.getStrNomeBase()));

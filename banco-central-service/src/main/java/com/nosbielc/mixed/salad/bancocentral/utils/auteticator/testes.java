@@ -14,18 +14,18 @@ public class testes {
         //Gerando autenticação
         GoogleAuthenticator gAuth = new GoogleAuthenticator();
         final GoogleAuthenticatorKey key = gAuth.createCredentials();
-        log.info("KeyVerification: " + key.getVerificationCode());
-        log.info("Key: " + key.getKey());
+        log.info("KeyVerification: {0}", key.getVerificationCode());
+        log.info("Key: {0}" , key.getKey());
 
         //Checando token
 //        boolean isCodeValid = gAuth.authorize("NUWSNYXVSG67KUDI", 190631);
-//        log.info("Valido ? " + isCodeValid);
+//        log.info("Valido ? {0} ", isCodeValid);
 
         while (isHabilitarLoop) {
             int code = gAuth.getTotpPassword(key.getKey());
             boolean isCodeValidTest = gAuth.authorize(key.getKey(), code);
-            log.info("Codigo Gerado pelo app ? " + code);
-            log.info("Valido ? " + isCodeValidTest);
+            log.info("Codigo Gerado pelo app ? {0} " ,  code);
+            log.info("Valido ? {0} ", isCodeValidTest);
             Thread.sleep(90000);
         }
 

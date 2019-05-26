@@ -12,6 +12,10 @@ range:
   port:
     min: 8001
     max: 8100
+banco:
+  central:
+    schedulers:
+      enabled: false
 app:
   #random int
   location-x: ${random.int}

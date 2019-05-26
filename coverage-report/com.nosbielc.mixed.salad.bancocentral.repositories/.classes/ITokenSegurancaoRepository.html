@@ -1,0 +1,69 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ITokenSegurancaoRepository</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.repositories</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ITokenSegurancaoRepository (com.nosbielc.mixed.salad.bancocentral.repositories)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ITokenSegurancaoRepository</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.repositories;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
+<i>4</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.entities.TokenSeguranca;
+<i>5</i>&nbsp;import org.springframework.data.domain.Page;
+<i>6</i>&nbsp;import org.springframework.data.domain.Pageable;
+<i>7</i>&nbsp;import org.springframework.data.jpa.repository.JpaRepository;
+<i>8</i>&nbsp;import org.springframework.data.jpa.repository.Query;
+<i>9</i>&nbsp;import org.springframework.data.repository.query.Param;
+<i>10</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;import java.util.Optional;
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;public interface ITokenSegurancaoRepository extends JpaRepository&lt;TokenSeguranca, Long&gt; {
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    @Transactional(readOnly = true)
+<i>17</i>&nbsp;    @Query(&quot;SELECT tokenSeguranca from TokenSeguranca tokenSeguranca WHERE tokenSeguranca.banco = :banco&quot;)
+<i>18</i>&nbsp;    Page&lt;TokenSeguranca&gt; findByBancoPageable(@Param(&quot;banco&quot;) Long banco, Pageable pageable);
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    @Transactional(readOnly = true)
+<i>21</i>&nbsp;    Optional&lt;TokenSeguranca&gt; findByBancoAndStrConta(Banco banco, String strConta);
+<i>22</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

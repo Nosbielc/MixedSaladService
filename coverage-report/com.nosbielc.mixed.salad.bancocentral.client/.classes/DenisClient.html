@@ -1,0 +1,64 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: DenisClient</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.client</a> ]
+</div>
+
+<h1>Coverage Summary for Class: DenisClient (com.nosbielc.mixed.salad.bancocentral.client)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">DenisClient</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.client;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.client.dto.DenisDeposito;
+<i>4</i>&nbsp;import org.springframework.cloud.openfeign.FeignClient;
+<i>5</i>&nbsp;import org.springframework.stereotype.Service;
+<i>6</i>&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+<i>7</i>&nbsp;import org.springframework.web.bind.annotation.PutMapping;
+<i>8</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;@Service
+<i>11</i>&nbsp;@FeignClient(&quot;http://10.53.53.63:8080&quot;)
+<i>12</i>&nbsp;public interface DenisClient {
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    @PutMapping(&quot;/transacaoInterna/depositar/{cpf}&quot;)
+<i>15</i>&nbsp;    Object depositar(@PathVariable(value = &quot;cpf&quot;) String cpf, @RequestBody DenisDeposito denisDeposito);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,208 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: AdminServiceApplication</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.admin</a> ]
+</div>
+
+<h1>Coverage Summary for Class: AdminServiceApplication (com.nosbielc.mixed.salad.admin)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">AdminServiceApplication</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">AdminServiceApplication$SecurityPermitAllConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 9)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">AdminServiceApplication$SecuritySecureConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 16)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/ 27)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.admin;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import de.codecentric.boot.admin.server.config.AdminServerProperties;
+<i>4</i>&nbsp;import de.codecentric.boot.admin.server.config.EnableAdminServer;
+<i>5</i>&nbsp;import org.springframework.boot.SpringApplication;
+<i>6</i>&nbsp;import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+<i>7</i>&nbsp;import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+<i>8</i>&nbsp;import org.springframework.context.annotation.Configuration;
+<i>9</i>&nbsp;import org.springframework.context.annotation.Profile;
+<i>10</i>&nbsp;import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+<i>11</i>&nbsp;import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+<i>12</i>&nbsp;import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
+<i>13</i>&nbsp;import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import java.util.concurrent.TimeUnit;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;@Configuration
+<i>18</i>&nbsp;@EnableAutoConfiguration
+<i>19</i>&nbsp;@EnableDiscoveryClient
+<i>20</i>&nbsp;@EnableAdminServer
+<b class="nc"><i>21</i>&nbsp;public class AdminServiceApplication {</b>
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    public static void main(String[] args) throws Exception {
+<i>24</i>&nbsp;        //TimeUnit.SECONDS.sleep(30);
+<b class="nc"><i>25</i>&nbsp;        SpringApplication.run(AdminServiceApplication.class, args);</b>
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;    @Profile(&quot;insecure&quot;)
+<i>29</i>&nbsp;    @Configuration
+<i>30</i>&nbsp;    public static class SecurityPermitAllConfig extends WebSecurityConfigurerAdapter {
+<i>31</i>&nbsp;        private final String adminContextPath;
+<i>32</i>&nbsp;
+<b class="nc"><i>33</i>&nbsp;        public SecurityPermitAllConfig(AdminServerProperties adminServerProperties) {</b>
+<b class="nc"><i>34</i>&nbsp;            this.adminContextPath = adminServerProperties.getContextPath();</b>
+<i>35</i>&nbsp;        }
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;        @Override
+<i>38</i>&nbsp;        protected void configure(HttpSecurity http) throws Exception {
+<b class="nc"><i>39</i>&nbsp;            http.authorizeRequests()</b>
+<b class="nc"><i>40</i>&nbsp;                    .anyRequest()</b>
+<b class="nc"><i>41</i>&nbsp;                    .permitAll()</b>
+<b class="nc"><i>42</i>&nbsp;                    .and()</b>
+<b class="nc"><i>43</i>&nbsp;                    .csrf()</b>
+<b class="nc"><i>44</i>&nbsp;                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</b>
+<b class="nc"><i>45</i>&nbsp;                    .ignoringAntMatchers(adminContextPath + &quot;/instances&quot;, adminContextPath + &quot;/actuator/**&quot;);</b>
+<i>46</i>&nbsp;        }
+<i>47</i>&nbsp;    }
+<i>48</i>&nbsp;
+<i>49</i>&nbsp;    @Profile(&quot;secure&quot;)
+<i>50</i>&nbsp;    @Configuration
+<i>51</i>&nbsp;    public static class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
+<i>52</i>&nbsp;        private final String adminContextPath;
+<i>53</i>&nbsp;
+<b class="nc"><i>54</i>&nbsp;        public SecuritySecureConfig(AdminServerProperties adminServerProperties) {</b>
+<b class="nc"><i>55</i>&nbsp;            this.adminContextPath = adminServerProperties.getContextPath();</b>
+<i>56</i>&nbsp;        }
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;        @Override
+<i>59</i>&nbsp;        protected void configure(HttpSecurity http) throws Exception {
+<i>60</i>&nbsp;            // @formatter:off
+<b class="nc"><i>61</i>&nbsp;            SavedRequestAwareAuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();</b>
+<b class="nc"><i>62</i>&nbsp;            successHandler.setTargetUrlParameter(&quot;redirectTo&quot;);</b>
+<b class="nc"><i>63</i>&nbsp;            successHandler.setDefaultTargetUrl(adminContextPath + &quot;/admin&quot;);</b>
+<i>64</i>&nbsp;
+<b class="nc"><i>65</i>&nbsp;            http.authorizeRequests()</b>
+<b class="nc"><i>66</i>&nbsp;                    .antMatchers(adminContextPath + &quot;/assets/**&quot;).permitAll()</b>
+<b class="nc"><i>67</i>&nbsp;                    .antMatchers(adminContextPath + &quot;/login&quot;).permitAll()</b>
+<b class="nc"><i>68</i>&nbsp;                    .anyRequest().authenticated()</b>
+<b class="nc"><i>69</i>&nbsp;                    .and()</b>
+<b class="nc"><i>70</i>&nbsp;                    .formLogin().loginPage(adminContextPath + &quot;/login&quot;).successHandler(successHandler).and()</b>
+<b class="nc"><i>71</i>&nbsp;                    .logout().logoutUrl(adminContextPath + &quot;/logout&quot;).and()</b>
+<b class="nc"><i>72</i>&nbsp;                    .httpBasic().and()</b>
+<b class="nc"><i>73</i>&nbsp;                    .csrf()</b>
+<b class="nc"><i>74</i>&nbsp;                    .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())</b>
+<b class="nc"><i>75</i>&nbsp;                    .ignoringAntMatchers(adminContextPath + &quot;/instances&quot;, adminContextPath + &quot;/actuator/**&quot;);</b>
+<i>76</i>&nbsp;            // @formatter:on
+<i>77</i>&nbsp;        }
+<i>78</i>&nbsp;    }
+<i>79</i>&nbsp;
+<i>80</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

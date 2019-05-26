@@ -1,0 +1,79 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ITokenSegurancaService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.services</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ITokenSegurancaService (com.nosbielc.mixed.salad.bancocentral.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ITokenSegurancaService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.services;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
+<i>4</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.entities.TokenSeguranca;
+<i>5</i>&nbsp;import org.springframework.data.domain.Page;
+<i>6</i>&nbsp;import org.springframework.data.domain.PageRequest;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;import java.util.Optional;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public interface ITokenSegurancaService {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    Page&lt;TokenSeguranca&gt; findAllPageable(PageRequest pageRequest);
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    Page&lt;TokenSeguranca&gt; findByBancoPageable(Long banco, PageRequest pageRequest);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    Optional&lt;TokenSeguranca&gt; findById(Long id);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    TokenSeguranca persist(TokenSeguranca tokenSeguranca);
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    void remove(TokenSeguranca tokenSeguranca);
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    Optional&lt;List&lt;TokenSeguranca&gt;&gt; findAll();
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    void remove(Long tokenSegurancaoId);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    Optional&lt;TokenSeguranca&gt; findByBancoAndStrConta(Banco banco, String strConta);
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    TokenSeguranca merge(TokenSeguranca tokenSeguranca);
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

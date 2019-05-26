@@ -1,0 +1,85 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ITokenSegurancaController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.controllers.utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ITokenSegurancaController (com.nosbielc.mixed.salad.bancocentral.controllers.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ITokenSegurancaController</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.controllers.utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.response.Content;
+<i>4</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.response.Response;
+<i>5</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.dtos.NovoTokenDto;
+<i>6</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.dtos.TokenDto;
+<i>7</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.dtos.ValidaTokenDto;
+<i>8</i>&nbsp;import io.swagger.annotations.ApiOperation;
+<i>9</i>&nbsp;import io.swagger.annotations.ApiResponse;
+<i>10</i>&nbsp;import io.swagger.annotations.ApiResponses;
+<i>11</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>12</i>&nbsp;import org.springframework.validation.BindingResult;
+<i>13</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;import javax.validation.Valid;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;public interface ITokenSegurancaController {
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @ApiOperation(value = &quot;Geração de Token&quot;, nickname = &quot;gerarToken&quot;, notes = &quot;Metodo para gerar Token do conta para o banco,&quot;)
+<i>20</i>&nbsp;    @ApiResponses(value = {
+<i>21</i>&nbsp;            @ApiResponse(code = 200, message = &quot;Success&quot;, responseContainer = &quot;Object&quot;, response = TokenDto.class),
+<i>22</i>&nbsp;            @ApiResponse(code = 401, message = &quot;Unauthorized&quot;),
+<i>23</i>&nbsp;            @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>24</i>&nbsp;            @ApiResponse(code = 404, message = &quot;Not Found&quot;),
+<i>25</i>&nbsp;            @ApiResponse(code = 500, message = &quot;Failure&quot;)})
+<i>26</i>&nbsp;    ResponseEntity&lt;Response&lt;Content&lt;TokenDto&gt;&gt;&gt; gerarToken(@Valid @RequestBody NovoTokenDto novoTokenDto,
+<i>27</i>&nbsp;                                                           BindingResult result) throws Exception;
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    @ApiOperation(value = &quot;Validação do Token&quot;, nickname = &quot;validarToken&quot;, notes = &quot;Metodo para validar Token da conta para o banco,&quot;)
+<i>30</i>&nbsp;    @ApiResponses(value = {
+<i>31</i>&nbsp;            @ApiResponse(code = 200, message = &quot;Success&quot;, responseContainer = &quot;Object&quot;, response = String.class),
+<i>32</i>&nbsp;            @ApiResponse(code = 401, message = &quot;Unauthorized&quot;),
+<i>33</i>&nbsp;            @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>34</i>&nbsp;            @ApiResponse(code = 404, message = &quot;Not Found&quot;),
+<i>35</i>&nbsp;            @ApiResponse(code = 500, message = &quot;Failure&quot;)})
+<i>36</i>&nbsp;    ResponseEntity&lt;Response&lt;String&gt;&gt; validarToken(@Valid @RequestBody ValidaTokenDto validaTokenDto,
+<i>37</i>&nbsp;                                                  BindingResult result) throws Exception;
+<i>38</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

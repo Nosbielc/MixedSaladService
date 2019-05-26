@@ -1,0 +1,130 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: NovoTokenDto</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.dtos</a> ]
+</div>
+
+<h1>Coverage Summary for Class: NovoTokenDto (com.nosbielc.mixed.salad.bancocentral.dtos)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">NovoTokenDto</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (14/ 14)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.dtos;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.hibernate.validator.constraints.Length;
+<i>4</i>&nbsp;
+<i>5</i>&nbsp;import javax.validation.constraints.NotEmpty;
+<i>6</i>&nbsp;import javax.validation.constraints.NotNull;
+<i>7</i>&nbsp;import java.io.Serializable;
+<i>8</i>&nbsp;import java.util.StringJoiner;
+<i>9</i>&nbsp;
+<i>10</i>&nbsp;public class NovoTokenDto implements Serializable {
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    @NotEmpty(message = &quot;strConta não pode ser null.&quot;)
+<i>13</i>&nbsp;    @Length(min = 11, max = 14, message = &quot;strConta pode ter no minimo 11 e maximo 14 caracteres.&quot;)
+<i>14</i>&nbsp;    private String strConta;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    @NotNull(message = &quot;bancoId não pode ser null.&quot;)
+<i>17</i>&nbsp;    private Long bancoId;
+<i>18</i>&nbsp;
+<b class="fc"><i>19</i>&nbsp;    public NovoTokenDto(String strConta, Long bancoId) {</b>
+<b class="fc"><i>20</i>&nbsp;        this.strConta = strConta;</b>
+<b class="fc"><i>21</i>&nbsp;        this.bancoId = bancoId;</b>
+<b class="fc"><i>22</i>&nbsp;    }</b>
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    @Override
+<i>25</i>&nbsp;    public String toString() {
+<b class="fc"><i>26</i>&nbsp;        return new StringJoiner(&quot;, &quot;, NovoTokenDto.class.getSimpleName() + &quot;[&quot;, &quot;]&quot;)</b>
+<b class="fc"><i>27</i>&nbsp;                .add(&quot;strConta=&#39;&quot; + strConta + &quot;&#39;&quot;)</b>
+<b class="fc"><i>28</i>&nbsp;                .add(&quot;bancoId=&quot; + bancoId)</b>
+<b class="fc"><i>29</i>&nbsp;                .toString();</b>
+<i>30</i>&nbsp;    }
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    public String getStrConta() {
+<b class="fc"><i>33</i>&nbsp;        return strConta;</b>
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    public void setStrConta(String strConta) {
+<b class="fc"><i>37</i>&nbsp;        this.strConta = strConta;</b>
+<b class="fc"><i>38</i>&nbsp;    }</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    public Long getBancoId() {
+<b class="fc"><i>41</i>&nbsp;        return bancoId;</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    public void setBancoId(Long bancoId) {
+<b class="fc"><i>45</i>&nbsp;        this.bancoId = bancoId;</b>
+<b class="fc"><i>46</i>&nbsp;    }</b>
+<i>47</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

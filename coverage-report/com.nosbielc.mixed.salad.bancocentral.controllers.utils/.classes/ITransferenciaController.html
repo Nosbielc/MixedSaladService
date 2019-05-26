@@ -1,0 +1,100 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ITransferenciaController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.controllers.utils</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ITransferenciaController (com.nosbielc.mixed.salad.bancocentral.controllers.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ITransferenciaController</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.controllers.utils;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.dtos.TransferenciaDto;
+<i>4</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.dtos.TransferenciaReponseDto;
+<i>5</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.response.Content;
+<i>6</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.response.Response;
+<i>7</i>&nbsp;import io.swagger.annotations.ApiOperation;
+<i>8</i>&nbsp;import io.swagger.annotations.ApiResponse;
+<i>9</i>&nbsp;import io.swagger.annotations.ApiResponses;
+<i>10</i>&nbsp;import org.springframework.data.domain.Page;
+<i>11</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>12</i>&nbsp;import org.springframework.validation.BindingResult;
+<i>13</i>&nbsp;import org.springframework.web.bind.annotation.PathVariable;
+<i>14</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i>15</i>&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;import javax.validation.Valid;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;public interface ITransferenciaController {
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    @ApiOperation(value = &quot;Lista de Transferencias&quot;, nickname = &quot;Transferencia&quot;, notes = &quot;Todos as transferencias registradas no banco central.&quot;)
+<i>22</i>&nbsp;    @ApiResponses(value = {
+<i>23</i>&nbsp;            @ApiResponse(code = 200, message = &quot;Success&quot;, responseContainer = &quot;List&quot;, response = TransferenciaReponseDto.class),
+<i>24</i>&nbsp;            @ApiResponse(code = 401, message = &quot;Unauthorized&quot;),
+<i>25</i>&nbsp;            @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>26</i>&nbsp;            @ApiResponse(code = 404, message = &quot;Not Found&quot;),
+<i>27</i>&nbsp;            @ApiResponse(code = 500, message = &quot;Failure&quot;)})
+<i>28</i>&nbsp;    ResponseEntity&lt;Response&lt;Page&lt;TransferenciaReponseDto&gt;&gt;&gt; listar(@RequestParam(value = &quot;pag&quot;, defaultValue = &quot;0&quot;) Integer pag,
+<i>29</i>&nbsp;                                                                   @RequestParam(value = &quot;ord&quot;, defaultValue = &quot;id&quot;) String ord,
+<i>30</i>&nbsp;                                                                   @RequestParam(value = &quot;dir&quot;, defaultValue = &quot;DESC&quot;) String dir,
+<i>31</i>&nbsp;                                                                   @RequestParam(value = &quot;autenticacao&quot;, defaultValue = &quot;&quot;) String autenticacao,
+<i>32</i>&nbsp;                                                                   @RequestParam(value = &quot;id&quot;, defaultValue = &quot;0&quot;) Long id) throws Exception;
+<i>33</i>&nbsp;
+<i>34</i>&nbsp;    @ApiOperation(value = &quot;Detalhes da Transferencia&quot;, nickname = &quot;DetalheTransferencia&quot;, notes = &quot;Todos os detalhes da transferencia.&quot;)
+<i>35</i>&nbsp;    @ApiResponses(value = {
+<i>36</i>&nbsp;            @ApiResponse(code = 200, message = &quot;Success&quot;, responseContainer = &quot;Object&quot;, response = TransferenciaReponseDto.class),
+<i>37</i>&nbsp;            @ApiResponse(code = 401, message = &quot;Unauthorized&quot;),
+<i>38</i>&nbsp;            @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>39</i>&nbsp;            @ApiResponse(code = 404, message = &quot;Not Found&quot;),
+<i>40</i>&nbsp;            @ApiResponse(code = 500, message = &quot;Failure&quot;)})
+<i>41</i>&nbsp;    ResponseEntity&lt;Response&lt;Content&lt;TransferenciaReponseDto&gt;&gt;&gt; detalhe(@PathVariable(value = &quot;autenticacao&quot;) String autenticacao) throws Exception;
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    @ApiOperation(value = &quot;Cria uma transferencia&quot;, nickname = &quot;criaTransferencia&quot;, notes = &quot;Inicia uma transação entre contas.&quot;)
+<i>44</i>&nbsp;    @ApiResponses(value = {
+<i>45</i>&nbsp;            @ApiResponse(code = 200, message = &quot;Success&quot;, responseContainer = &quot;Object&quot;, response = TransferenciaReponseDto.class),
+<i>46</i>&nbsp;            @ApiResponse(code = 401, message = &quot;Unauthorized&quot;),
+<i>47</i>&nbsp;            @ApiResponse(code = 403, message = &quot;Forbidden&quot;),
+<i>48</i>&nbsp;            @ApiResponse(code = 404, message = &quot;Not Found&quot;),
+<i>49</i>&nbsp;            @ApiResponse(code = 500, message = &quot;Failure&quot;)})
+<i>50</i>&nbsp;    ResponseEntity&lt;Response&lt;Content&lt;TransferenciaReponseDto&gt;&gt;&gt; criar(@Valid @RequestBody TransferenciaDto transferenciaDto,
+<i>51</i>&nbsp;                                                                  BindingResult result) throws Exception;
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

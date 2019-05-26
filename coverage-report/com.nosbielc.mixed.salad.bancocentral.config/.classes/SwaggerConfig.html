@@ -1,0 +1,152 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SwaggerConfig</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.config</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SwaggerConfig (com.nosbielc.mixed.salad.bancocentral.config)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SwaggerConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">SwaggerConfig$$EnhancerBySpringCGLIB$$3a585df8</td>
+  </tr>
+  <tr>
+    <td class="name">SwaggerConfig$$EnhancerBySpringCGLIB$$3a585df8$$FastClassBySpringCGLIB$$30daa075</td>
+  </tr>
+  <tr>
+    <td class="name">SwaggerConfig$$FastClassBySpringCGLIB$$be41af56</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (19/ 19)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.config;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import org.springframework.context.annotation.Bean;
+<i>4</i>&nbsp;import org.springframework.context.annotation.Configuration;
+<i>5</i>&nbsp;import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+<i>6</i>&nbsp;import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+<i>7</i>&nbsp;import springfox.documentation.builders.ApiInfoBuilder;
+<i>8</i>&nbsp;import springfox.documentation.builders.PathSelectors;
+<i>9</i>&nbsp;import springfox.documentation.builders.RequestHandlerSelectors;
+<i>10</i>&nbsp;import springfox.documentation.service.ApiInfo;
+<i>11</i>&nbsp;import springfox.documentation.service.Contact;
+<i>12</i>&nbsp;import springfox.documentation.spi.DocumentationType;
+<i>13</i>&nbsp;import springfox.documentation.spring.web.plugins.Docket;
+<i>14</i>&nbsp;import springfox.documentation.swagger2.annotations.EnableSwagger2;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;@Configuration
+<i>17</i>&nbsp;//@Profile(&quot;dev&quot;)
+<i>18</i>&nbsp;@EnableSwagger2
+<b class="fc"><i>19</i>&nbsp;public class SwaggerConfig extends WebMvcConfigurationSupport {</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    @Bean
+<i>22</i>&nbsp;    public Docket swaggerPersonApi10() {
+<b class="fc"><i>23</i>&nbsp;        return new Docket(DocumentationType.SWAGGER_2)</b>
+<b class="fc"><i>24</i>&nbsp;                .select()</b>
+<b class="fc"><i>25</i>&nbsp;                .apis(RequestHandlerSelectors.basePackage(&quot;br.com.banco.unidos.bancocentral.controllers&quot;))</b>
+<b class="fc"><i>26</i>&nbsp;                .paths(PathSelectors.any())</b>
+<b class="fc"><i>27</i>&nbsp;                .build()</b>
+<b class="fc"><i>28</i>&nbsp;                .apiInfo(apiInfo());</b>
+<i>29</i>&nbsp;    }
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    private ApiInfo apiInfo() {
+<b class="fc"><i>32</i>&nbsp;        return new ApiInfoBuilder().title(&quot;Banco Central API Rest&quot;)</b>
+<b class="fc"><i>33</i>&nbsp;                .description(&quot;Projeto Banco Central em Java.&quot;)</b>
+<b class="fc"><i>34</i>&nbsp;                .version(&quot;1.0&quot;)</b>
+<b class="fc"><i>35</i>&nbsp;                .license(&quot;Licença Apache 2.0&quot;)</b>
+<b class="fc"><i>36</i>&nbsp;                .licenseUrl(&quot;https://github.com/Nosbielc&quot;)</b>
+<b class="fc"><i>37</i>&nbsp;                .contact(</b>
+<i>38</i>&nbsp;                        new Contact(&quot;Cleibson Gomes da Silva&quot;,
+<i>39</i>&nbsp;                                &quot;https://github.com/Nosbielc&quot;,
+<i>40</i>&nbsp;                                &quot;cleibson.gomes.silva@gmail.com&quot;))
+<b class="fc"><i>41</i>&nbsp;                .build();</b>
+<i>42</i>&nbsp;    }
+<i>43</i>&nbsp;
+<i>44</i>&nbsp;    @Override
+<i>45</i>&nbsp;    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+<b class="fc"><i>46</i>&nbsp;        registry.addResourceHandler(&quot;swagger-ui.html&quot;)</b>
+<b class="fc"><i>47</i>&nbsp;                .addResourceLocations(&quot;classpath:/META-INF/resources/&quot;);</b>
+<i>48</i>&nbsp;
+<b class="fc"><i>49</i>&nbsp;        registry.addResourceHandler(&quot;/webjars/**&quot;)</b>
+<b class="fc"><i>50</i>&nbsp;                .addResourceLocations(&quot;classpath:/META-INF/resources/webjars/&quot;);</b>
+<b class="fc"><i>51</i>&nbsp;    }</b>
+<i>52</i>&nbsp;
+<i>53</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ITrasnferenciaService</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.services</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ITrasnferenciaService (com.nosbielc.mixed.salad.bancocentral.services)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ITrasnferenciaService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.services;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.entities.Transferencia;
+<i>4</i>&nbsp;import com.nosbielc.mixed.salad.bancocentral.enums.TransferenciaStatus;
+<i>5</i>&nbsp;import org.springframework.data.domain.Page;
+<i>6</i>&nbsp;import org.springframework.data.domain.PageRequest;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;import java.util.List;
+<i>9</i>&nbsp;import java.util.Optional;
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;public interface ITrasnferenciaService {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    Page&lt;Transferencia&gt; findAllPageable(PageRequest pageRequest);
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;    Page&lt;Transferencia&gt; findByBancoOrigemPageable(Long bancoOrigem, PageRequest pageRequest);
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    List&lt;Transferencia&gt; findByBancoOrigem(Long bancoOrigem);
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    Page&lt;Transferencia&gt; findByBancoDestinoPageable(Long bancoDestino, PageRequest pageRequest);
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    List&lt;Transferencia&gt; findByBancoDestino(Long bancoDestino);
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    Page&lt;Transferencia&gt; findByContaDestinoPageable(String contaDestino, PageRequest pageRequest);
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    List&lt;Transferencia&gt; findByContaDestino(String contaDestino);
+<i>26</i>&nbsp;
+<i>27</i>&nbsp;    Page&lt;Transferencia&gt; findByContaOrigemPageable(String contaOrigem, PageRequest pageRequest);
+<i>28</i>&nbsp;
+<i>29</i>&nbsp;    List&lt;Transferencia&gt; findByContaOrigem(String contaOrigem);
+<i>30</i>&nbsp;
+<i>31</i>&nbsp;    Optional&lt;Transferencia&gt; findById(Long id);
+<i>32</i>&nbsp;
+<i>33</i>&nbsp;    Transferencia persist(Transferencia transferencia);
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    void remove(Transferencia transferencia);
+<i>36</i>&nbsp;
+<i>37</i>&nbsp;    Optional&lt;List&lt;Transferencia&gt;&gt; findAll();
+<i>38</i>&nbsp;
+<i>39</i>&nbsp;    void remove(Long transferenciaId);
+<i>40</i>&nbsp;
+<i>41</i>&nbsp;    Page&lt;Transferencia&gt; findOneAutenticacao(String autenticacao, PageRequest pageRequest);
+<i>42</i>&nbsp;
+<i>43</i>&nbsp;    Optional&lt;Transferencia&gt; findByAutenticacao(String autenticacao);
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    List&lt;Transferencia&gt; findAllByTransferenciaStatusOrderByIdAsc(TransferenciaStatus transferenciaStatus);
+<i>46</i>&nbsp;
+<i>47</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

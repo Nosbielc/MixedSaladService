@@ -1,0 +1,207 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Banco</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.nosbielc.mixed.salad.bancocentral.entities</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Banco (com.nosbielc.mixed.salad.bancocentral.entities)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Banco</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    42,1%
+  </span>
+  <span class="absValue">
+    (8/ 19)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40,9%
+  </span>
+  <span class="absValue">
+    (18/ 44)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.nosbielc.mixed.salad.bancocentral.entities;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import javax.persistence.*;
+<i>4</i>&nbsp;import java.io.Serializable;
+<i>5</i>&nbsp;import java.util.ArrayList;
+<i>6</i>&nbsp;import java.util.List;
+<i>7</i>&nbsp;import java.util.StringJoiner;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;@Entity
+<i>10</i>&nbsp;@Table(name = &quot;banco&quot;)
+<i>11</i>&nbsp;public class Banco implements Serializable {
+<i>12</i>&nbsp;
+<i>13</i>&nbsp;    @Id
+<i>14</i>&nbsp;    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<i>15</i>&nbsp;    private Long id;
+<i>16</i>&nbsp;
+<i>17</i>&nbsp;    @Column(name = &quot;cod_banco&quot;, nullable = false)
+<i>18</i>&nbsp;    private Long codBanco;
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    @Column(name = &quot;str_nome_base&quot;, nullable = false)
+<i>21</i>&nbsp;    private String strNomeBase;
+<i>22</i>&nbsp;
+<i>23</i>&nbsp;    @Column(name = &quot;str_nome&quot;, nullable = false)
+<i>24</i>&nbsp;    private String strNome;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;    @Column(name = &quot;is_ativo&quot;, nullable = false)
+<i>27</i>&nbsp;    private Boolean ativo;
+<i>28</i>&nbsp;
+<b class="fc"><i>29</i>&nbsp;    @OneToMany(mappedBy = &quot;bancoOrigem&quot;, cascade = CascadeType.ALL)</b>
+<i>30</i>&nbsp;    private List&lt;Transferencia&gt; transferenciaOrigem = new ArrayList&lt;Transferencia&gt;();
+<i>31</i>&nbsp;
+<b class="fc"><i>32</i>&nbsp;    @OneToMany(mappedBy = &quot;bancoDestino&quot;, cascade = CascadeType.ALL)</b>
+<i>33</i>&nbsp;    private List&lt;Transferencia&gt; transferenciaDestino = new ArrayList&lt;Transferencia&gt;();
+<i>34</i>&nbsp;
+<b class="fc"><i>35</i>&nbsp;    @OneToMany(mappedBy = &quot;banco&quot;, cascade = CascadeType.ALL)</b>
+<i>36</i>&nbsp;    private List&lt;TokenSeguranca&gt; tokenSeguranca = new ArrayList&lt;TokenSeguranca&gt;();;
+<i>37</i>&nbsp;
+<b class="fc"><i>38</i>&nbsp;    public Banco() {</b>
+<b class="fc"><i>39</i>&nbsp;    }</b>
+<i>40</i>&nbsp;
+<b class="fc"><i>41</i>&nbsp;    public Banco(Long codBanco, String strNomeBase, String strNome, Boolean ativo) {</b>
+<b class="fc"><i>42</i>&nbsp;        this.codBanco = codBanco;</b>
+<b class="fc"><i>43</i>&nbsp;        this.strNomeBase = strNomeBase;</b>
+<b class="fc"><i>44</i>&nbsp;        this.strNome = strNome;</b>
+<b class="fc"><i>45</i>&nbsp;        this.ativo = ativo;</b>
+<b class="fc"><i>46</i>&nbsp;    }</b>
+<i>47</i>&nbsp;
+<i>48</i>&nbsp;    @Override
+<i>49</i>&nbsp;    public String toString() {
+<b class="nc"><i>50</i>&nbsp;        return new StringJoiner(&quot;, &quot;, Banco.class.getSimpleName() + &quot;[&quot;, &quot;]&quot;)</b>
+<b class="nc"><i>51</i>&nbsp;                .add(&quot;id=&quot; + id)</b>
+<b class="nc"><i>52</i>&nbsp;                .add(&quot;codBanco=&quot; + codBanco)</b>
+<b class="nc"><i>53</i>&nbsp;                .add(&quot;strNomeBase=&#39;&quot; + strNomeBase + &quot;&#39;&quot;)</b>
+<b class="nc"><i>54</i>&nbsp;                .add(&quot;strNome=&#39;&quot; + strNome + &quot;&#39;&quot;)</b>
+<b class="nc"><i>55</i>&nbsp;                .add(&quot;ativo=&quot; + ativo)</b>
+<b class="nc"><i>56</i>&nbsp;                .add(&quot;transferenciaOrigem=&quot; + transferenciaOrigem)</b>
+<b class="nc"><i>57</i>&nbsp;                .add(&quot;transferenciaDestino=&quot; + transferenciaDestino)</b>
+<b class="nc"><i>58</i>&nbsp;                .toString();</b>
+<i>59</i>&nbsp;    }
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    public Long getId() {
+<b class="fc"><i>62</i>&nbsp;        return id;</b>
+<i>63</i>&nbsp;    }
+<i>64</i>&nbsp;
+<i>65</i>&nbsp;    public void setId(Long id) {
+<b class="fc"><i>66</i>&nbsp;        this.id = id;</b>
+<b class="fc"><i>67</i>&nbsp;    }</b>
+<i>68</i>&nbsp;
+<i>69</i>&nbsp;    public Long getCodBanco() {
+<b class="fc"><i>70</i>&nbsp;        return codBanco;</b>
+<i>71</i>&nbsp;    }
+<i>72</i>&nbsp;
+<i>73</i>&nbsp;    public void setCodBanco(Long codBanco) {
+<b class="nc"><i>74</i>&nbsp;        this.codBanco = codBanco;</b>
+<b class="nc"><i>75</i>&nbsp;    }</b>
+<i>76</i>&nbsp;
+<i>77</i>&nbsp;    public String getStrNomeBase() {
+<b class="fc"><i>78</i>&nbsp;        return strNomeBase;</b>
+<i>79</i>&nbsp;    }
+<i>80</i>&nbsp;
+<i>81</i>&nbsp;    public void setStrNomeBase(String strNomeBase) {
+<b class="nc"><i>82</i>&nbsp;        this.strNomeBase = strNomeBase;</b>
+<b class="nc"><i>83</i>&nbsp;    }</b>
+<i>84</i>&nbsp;
+<i>85</i>&nbsp;    public String getStrNome() {
+<b class="fc"><i>86</i>&nbsp;        return strNome;</b>
+<i>87</i>&nbsp;    }
+<i>88</i>&nbsp;
+<i>89</i>&nbsp;    public void setStrNome(String strNome) {
+<b class="nc"><i>90</i>&nbsp;        this.strNome = strNome;</b>
+<b class="nc"><i>91</i>&nbsp;    }</b>
+<i>92</i>&nbsp;
+<i>93</i>&nbsp;    public Boolean getAtivo() {
+<b class="fc"><i>94</i>&nbsp;        return ativo;</b>
+<i>95</i>&nbsp;    }
+<i>96</i>&nbsp;
+<i>97</i>&nbsp;    public void setAtivo(Boolean ativo) {
+<b class="nc"><i>98</i>&nbsp;        this.ativo = ativo;</b>
+<b class="nc"><i>99</i>&nbsp;    }</b>
+<i>100</i>&nbsp;
+<i>101</i>&nbsp;    public List&lt;Transferencia&gt; getTransferenciaOrigem() {
+<b class="nc"><i>102</i>&nbsp;        return transferenciaOrigem;</b>
+<i>103</i>&nbsp;    }
+<i>104</i>&nbsp;
+<i>105</i>&nbsp;    public void setTransferenciaOrigem(List&lt;Transferencia&gt; transferenciaOrigem) {
+<b class="nc"><i>106</i>&nbsp;        this.transferenciaOrigem = transferenciaOrigem;</b>
+<b class="nc"><i>107</i>&nbsp;    }</b>
+<i>108</i>&nbsp;
+<i>109</i>&nbsp;    public List&lt;Transferencia&gt; getTransferenciaDestino() {
+<b class="nc"><i>110</i>&nbsp;        return transferenciaDestino;</b>
+<i>111</i>&nbsp;    }
+<i>112</i>&nbsp;
+<i>113</i>&nbsp;    public void setTransferenciaDestino(List&lt;Transferencia&gt; transferenciaDestino) {
+<b class="nc"><i>114</i>&nbsp;        this.transferenciaDestino = transferenciaDestino;</b>
+<b class="nc"><i>115</i>&nbsp;    }</b>
+<i>116</i>&nbsp;
+<i>117</i>&nbsp;    public List&lt;TokenSeguranca&gt; getTokenSeguranca() {
+<b class="nc"><i>118</i>&nbsp;        return tokenSeguranca;</b>
+<i>119</i>&nbsp;    }
+<i>120</i>&nbsp;
+<i>121</i>&nbsp;    public void setTokenSeguranca(List&lt;TokenSeguranca&gt; tokenSeguranca) {
+<b class="nc"><i>122</i>&nbsp;        this.tokenSeguranca = tokenSeguranca;</b>
+<b class="nc"><i>123</i>&nbsp;    }</b>
+<i>124</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2019-05-26 13:22</div>
+</div>
+</body>
+</html>

@@ -17,7 +17,7 @@ scrape_configs:
     # metrics_path defaults to '/metrics'
     # scheme defaults to 'http'.
     static_configs:
-      - targets: ['172.22.128.157:7000']
+      - targets: ['172.28.165.145:7000']
 
 #  - job_name: 'spring-actuator-balancer'
 #    metrics_path: 'bc/actuator/prometheus'
@@ -26,29 +26,29 @@ scrape_configs:
 #      - targets: ['192.168.0.128:9092']
 #      #- targets: ['HOST_IP:9092']
 
-  - job_name: 'spring-actuator-inst-01'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['172.22.128.157:8009']
-
-  - job_name: 'spring-actuator-inst-02'
-    metrics_path: 'actuator/prometheus'
-    scrape_interval: 5s
-    static_configs:
-      - targets: ['172.22.128.157:8014']
-
+#  - job_name: 'spring-actuator-inst-01'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['172.28.165.145:8018']
+#
+#  - job_name: 'spring-actuator-inst-02'
+#    metrics_path: 'actuator/prometheus'
+#    scrape_interval: 5s
+#    static_configs:
+#      - targets: ['172.28.165.145:8014']
+#
 #  - job_name: 'spring-actuator-inst-03'
 #    metrics_path: 'actuator/prometheus'
 #    scrape_interval: 5s
 #    static_configs:
-#      - targets: ['192.168.0.128:8014']
-#
-#  - job_name: 'spring-actuator-inst-04'
-#    metrics_path: 'actuator/prometheus'
-#    scrape_interval: 5s
-#    static_configs:
-#      - targets: ['192.168.0.128:8006']
+#      - targets: ['172.28.165.145:8020']
+
+  - job_name: 'spring-actuator-all'
+    metrics_path: 'actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['172.28.165.145:8018', '172.28.165.145:8014', '172.28.165.145:8020']
 #
 #  - job_name: 'spring-actuator-inst-05'
 #    metrics_path: 'actuator/prometheus'

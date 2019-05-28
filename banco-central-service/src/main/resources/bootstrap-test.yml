@@ -28,3 +28,5 @@ spring:
         type: trace
         jdbc:
           time_zone: UTC-3
+pagination:
+  qtd_by_page: 100

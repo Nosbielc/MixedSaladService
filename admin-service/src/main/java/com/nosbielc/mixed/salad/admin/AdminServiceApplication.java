@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import java.util.concurrent.TimeUnit;
-
 @Configuration
 @EnableAutoConfiguration
 @EnableDiscoveryClient

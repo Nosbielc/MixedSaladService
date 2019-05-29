@@ -33,4 +33,8 @@ public class ServerLauncherCustomizer {
 
     }
 
+    public void check() {
+        //ainda em desemvolvimento
+    }
+
 }

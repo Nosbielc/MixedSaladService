@@ -3,8 +3,6 @@ package com.nosbielc.mixed.salad.bancocentral.services.impl;
 import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
 import com.nosbielc.mixed.salad.bancocentral.repositories.IBancoRepository;
 import com.nosbielc.mixed.salad.bancocentral.services.IBancoService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -4,8 +4,6 @@ import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
 import com.nosbielc.mixed.salad.bancocentral.entities.TokenSeguranca;
 import com.nosbielc.mixed.salad.bancocentral.repositories.ITokenSegurancaoRepository;
 import com.nosbielc.mixed.salad.bancocentral.services.ITokenSegurancaService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -47,9 +47,6 @@ public class User implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "authority"))
     private Set<Authority> authorities;
 
-    public User() {
-    }
-
     public String getUsername() {
         return username;
     }

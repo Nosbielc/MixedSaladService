@@ -29,4 +29,8 @@ public class FeignConfig {
 
         return new Request.Options(ribbonConnectionTimeout, ribbonReadTimeout);
     }
+
+    public void request() {
+        // em desenvolvimento
+    }
 }

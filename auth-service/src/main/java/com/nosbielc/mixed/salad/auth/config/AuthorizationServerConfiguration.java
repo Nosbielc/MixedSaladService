@@ -24,7 +24,7 @@ import com.nosbielc.mixed.salad.auth.domain.Authorities;
 public class AuthorizationServerConfiguration extends
         AuthorizationServerConfigurerAdapter {
 
-    private static PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Value("${security.oauth2.client.client-id}")
     private String clientId;

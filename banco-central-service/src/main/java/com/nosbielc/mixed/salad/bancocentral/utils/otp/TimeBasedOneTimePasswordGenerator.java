@@ -91,7 +91,7 @@ public class TimeBasedOneTimePasswordGenerator extends HmacOneTimePasswordGenera
       * on their own
       *
       */
-     public int generateOneTimePassword(final SecretKey secretKey, final Date timestamp) throws InvalidKeyException {
+     public int generateOneTimePassword(final SecretKey secretKey, final Date timestamp) throws InvalidKeyException, NoSuchAlgorithmException {
           return this.generateOneTimePassword(secretKey, timestamp.getTime() / this.timeStepMillis);
      }
 

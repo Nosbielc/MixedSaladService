@@ -17,8 +17,6 @@ import java.util.Optional;
 @Service
 public class TransferenciaServiceImpl implements ITrasnferenciaService {
 
-    private static final Logger log = LoggerFactory.getLogger(TransferenciaServiceImpl.class);
-
     @Autowired
     private ITransferenciaRepository transferenciaRepository;
 

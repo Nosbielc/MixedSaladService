@@ -3,15 +3,14 @@ package com.nosbielc.mixed.salad.bancocentral.componentes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class ServerLaucherCustomizer {
+public class ServerLauncherCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(ServerLaucherCustomizer.class);
+    private static final Logger log = LoggerFactory.getLogger(ServerLauncherCustomizer.class);
 
     @Value("${spring.profiles.active}")
     private static String activeProfile;

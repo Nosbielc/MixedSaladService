@@ -50,19 +50,6 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(String username, String password, String email,
-                boolean activated, String firstName, String lastName,
-                String activationKey, String resetPasswordKey,
-                Set<Authority> authorities) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.activated = activated;
-        this.activationKey = activationKey;
-        this.resetPasswordKey = resetPasswordKey;
-        this.authorities = authorities;
-    }
-
     public String getUsername() {
         return username;
     }

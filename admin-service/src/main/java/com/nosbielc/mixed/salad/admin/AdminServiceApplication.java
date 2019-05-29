@@ -20,8 +20,7 @@ import java.util.concurrent.TimeUnit;
 @EnableAdminServer
 public class AdminServiceApplication {
 
-    public static void main(String[] args) throws Exception {
-        //TimeUnit.SECONDS.sleep(30);
+    public static void main(String[] args) {
         SpringApplication.run(AdminServiceApplication.class, args);
     }
 

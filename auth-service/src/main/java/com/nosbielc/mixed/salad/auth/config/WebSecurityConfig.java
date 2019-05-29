@@ -12,7 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.nosbielc.mixed.salad.auth.service.UserDetailsService;
+import com.nosbielc.mixed.salad.auth.service.UserDetailsCustomService;
 
 @Configuration
 @EnableWebSecurity
@@ -20,14 +20,14 @@ import com.nosbielc.mixed.salad.auth.service.UserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserDetailsCustomService userDetailsCustomService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(userDetailsCustomService).passwordEncoder(passwordEncoder);
     }
 
     @Override

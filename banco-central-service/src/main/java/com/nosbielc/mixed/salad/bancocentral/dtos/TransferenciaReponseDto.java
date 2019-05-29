@@ -57,7 +57,7 @@ public class TransferenciaReponseDto implements Serializable {
         this.bancoOrigem = new BancoDto(transferencia.getBancoOrigem());
         this.contaOrigem = transferencia.getContaOrigem();
         this.transferenciaStatus = transferencia.getTransferenciaStatus();
-        this.bancoDestino = new BancoDto(transferencia.getBancoDestino());;
+        this.bancoDestino = new BancoDto(transferencia.getBancoDestino());
         this.contaDestino = transferencia.getContaDestino();
     }
 

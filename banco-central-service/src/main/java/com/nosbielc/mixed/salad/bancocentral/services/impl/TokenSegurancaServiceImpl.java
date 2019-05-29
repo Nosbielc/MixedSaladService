@@ -17,9 +17,6 @@ import java.util.Optional;
 @Service
 public class TokenSegurancaServiceImpl implements ITokenSegurancaService {
 
-
-    private static final Logger log = LoggerFactory.getLogger(TokenSegurancaServiceImpl.class);
-
     @Autowired
     ITokenSegurancaoRepository tokenSegurancaoRepository;
 

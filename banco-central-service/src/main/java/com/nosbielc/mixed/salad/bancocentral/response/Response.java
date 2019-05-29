@@ -1,15 +1,15 @@
 package com.nosbielc.mixed.salad.bancocentral.response;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Response<T> implements Serializable {
+public class Response<T>{
 
     private T data;
     private List<String> errors;
 
     public Response() {
+        // Construtor Basico
     }
 
     public T getData() {
@@ -22,7 +22,7 @@ public class Response<T> implements Serializable {
 
     public List<String> getErrors() {
         if (this.errors == null) {
-            this.errors = new ArrayList<String>();
+            this.errors = new ArrayList<>();
         }
         return errors;
     }
@@ -33,7 +33,7 @@ public class Response<T> implements Serializable {
 
     public void addError(String error) {
         if (this.errors == null) {
-            this.errors = new ArrayList<String>();
+            this.errors = new ArrayList<>();
         }
 
         this.errors.add(error);

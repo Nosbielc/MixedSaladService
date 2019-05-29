@@ -31,15 +31,15 @@ public class TokenSegurancaController extends TokenSegurancaControllerUtils impl
 
     @Override
     @PostMapping
-    public ResponseEntity<Response<Content<TokenDto>>> gerarToken(@Valid NovoTokenDto novoTokenDto, BindingResult result) throws Exception {
-        log.info("Registrando o Token: {}", novoTokenDto.toString());
+    public ResponseEntity<Response<Content<TokenDto>>> gerarToken(@Valid NovoTokenDto novoTokenDto, BindingResult result) {
+        log.info("Registrando o Token: {}", novoTokenDto);
         return ResponseEntity.ok(criarToken(novoTokenDto));
     }
 
     @Override
     @PostMapping("/validar")
-    public ResponseEntity<Response<String>> validarToken(@Valid ValidaTokenDto validaTokenDto, BindingResult result) throws Exception {
-        log.info("Validando o Token: {}", validaTokenDto.toString());
+    public ResponseEntity<Response<String>> validarToken(@Valid ValidaTokenDto validaTokenDto, BindingResult result) {
+        log.info("Validando o Token: {}", validaTokenDto);
         return ResponseEntity.ok(validarToken(validaTokenDto));
     }
 }

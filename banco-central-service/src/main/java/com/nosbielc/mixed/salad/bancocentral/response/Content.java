@@ -2,16 +2,17 @@ package com.nosbielc.mixed.salad.bancocentral.response;
 
 public class Content<T> {
 
-    private T content;
+    private T objects;
 
     public Content() {
+        // construtor vazio
     }
 
-    public T getContent() {
-        return content;
+    public T getObjects() {
+        return objects;
     }
 
-    public void setContent(T content) {
-        this.content = content;
+    public void setObjects(T objects) {
+        this.objects = objects;
     }
 }

@@ -13,13 +13,13 @@ public class BancoControllerUtils {
      * @param banco
      * @return BancoDto
      */
-    public static Content<BancoDto> toContentBancoDto(Banco banco) {
+    public Content<BancoDto> toContentBancoDto(Banco banco) {
         Content<BancoDto> content = new Content<>();
-        content.setContent(toBancoDto(banco));
+        content.setObjects(toBancoDto(banco));
         return content;
     }
 
-    public static BancoDto toBancoDto(Banco banco) {
+    public BancoDto toBancoDto(Banco banco) {
         BancoDto bancoDto = new BancoDto();
         bancoDto.setId(banco.getId());
         bancoDto.setStrNomeBase(banco.getStrNomeBase());
@@ -29,7 +29,7 @@ public class BancoControllerUtils {
         return bancoDto;
     }
 
-    public static Banco toBanco(NovoBancoDto novoBancoDto) {
+    public Banco toBanco(NovoBancoDto novoBancoDto) {
         return new Banco(novoBancoDto.getCodBanco(), novoBancoDto.getStrNomeBase(), novoBancoDto.getStrNome(), Boolean.TRUE);
     }
 }

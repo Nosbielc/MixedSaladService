@@ -29,7 +29,7 @@ public interface ITransferenciaController {
                                                                    @RequestParam(value = "ord", defaultValue = "id") String ord,
                                                                    @RequestParam(value = "dir", defaultValue = "DESC") String dir,
                                                                    @RequestParam(value = "autenticacao", defaultValue = "") String autenticacao,
-                                                                   @RequestParam(value = "id", defaultValue = "0") Long id) throws Exception;
+                                                                   @RequestParam(value = "id", defaultValue = "0") Long id) ;
 
     @ApiOperation(value = "Detalhes da Transferencia", nickname = "DetalheTransferencia", notes = "Todos os detalhes da transferencia.")
     @ApiResponses(value = {
@@ -38,7 +38,7 @@ public interface ITransferenciaController {
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
-    ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(@PathVariable(value = "autenticacao") String autenticacao) throws Exception;
+    ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(@PathVariable(value = "autenticacao") String autenticacao) ;
 
     @ApiOperation(value = "Cria uma transferencia", nickname = "criaTransferencia", notes = "Inicia uma transação entre contas.")
     @ApiResponses(value = {
@@ -48,6 +48,6 @@ public interface ITransferenciaController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     ResponseEntity<Response<Content<TransferenciaReponseDto>>> criar(@Valid @RequestBody TransferenciaDto transferenciaDto,
-                                                                  BindingResult result) throws Exception;
+                                                                  BindingResult result) ;
 
 }

@@ -25,7 +25,7 @@ public interface IBancoController {
             @ApiResponse(code = 500, message = "Failure")})
     ResponseEntity<Response<Page<BancoDto>>> listar(@RequestParam(value = "pag", defaultValue = "0") Integer pag,
                                                     @RequestParam(value = "ord", defaultValue = "id") String ord,
-                                                    @RequestParam(value = "dir", defaultValue = "DESC") String dir) throws Exception;
+                                                    @RequestParam(value = "dir", defaultValue = "DESC") String dir);
 
     @ApiOperation(value = "Detalhe bancos", nickname = "DetalheBanco", notes = "Visualizar datalhes do banco.")
     @ApiResponses(value = {
@@ -34,7 +34,7 @@ public interface IBancoController {
             @ApiResponse(code = 403, message = "Forbidden"),
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
-    ResponseEntity<Response<Content<BancoDto>>> detalhe(@PathVariable(value = "id") Long id) throws Exception;
+    ResponseEntity<Response<Content<BancoDto>>> detalhe(@PathVariable(value = "id") Long id);
 
     @ApiOperation(value = "Inclusão de bancos", nickname = "cirarBanco", notes = "Metodo para incluir um novo banco na base do banco central")
     @ApiResponses(value = {
@@ -44,5 +44,5 @@ public interface IBancoController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     ResponseEntity<Response<Content<BancoDto>>> criar(@Valid @RequestBody NovoBancoDto novoBancoDto,
-                                             BindingResult result) throws Exception;
+                                             BindingResult result);
 }

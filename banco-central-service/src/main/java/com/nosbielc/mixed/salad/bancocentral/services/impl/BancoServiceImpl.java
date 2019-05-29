@@ -16,8 +16,6 @@ import java.util.Optional;
 @Service
 public class BancoServiceImpl implements IBancoService {
 
-    private static final Logger log = LoggerFactory.getLogger(BancoServiceImpl.class);
-
     @Autowired
     private IBancoRepository bancoRepository;
 

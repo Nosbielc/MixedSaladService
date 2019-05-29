@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -38,7 +39,7 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
     @Override
     @GetMapping
     public ResponseEntity<Response<Page<TransferenciaReponseDto>>> listar(Integer pag, String ord, String dir,
-                                                                          String autenticacao, Long id) throws Exception {
+                                                                          String autenticacao, Long id) {
         Response<Page<TransferenciaReponseDto>> response = new Response<>();
         PageRequest pageRequest = PageRequest.of(pag, this.fetchForPage, Sort.Direction.valueOf(dir), ord);
         Page<Transferencia> transferencias = Page.empty();
@@ -63,7 +64,7 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
 
     @Override
     @GetMapping("/{autenticacao}")
-    public ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(String autenticacao) throws Exception {
+    public ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(String autenticacao) {
         Response<Content<TransferenciaReponseDto>> response = new Response<>();
         Optional<Transferencia> transferencia = this.trasnferenciaService.findByAutenticacao(autenticacao);
 
@@ -76,8 +77,14 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
     @Override
     @PostMapping
     public ResponseEntity<Response<Content<TransferenciaReponseDto>>> criar(@Valid @RequestBody TransferenciaDto transferenciaDto,
-                                                                   BindingResult result) throws Exception {
+                                                                   BindingResult result) {
+        Response<Content<TransferenciaReponseDto>> response = new Response<>();
         log.info("Registrando a nova Transação: {}", transferenciaDto);
-        return ResponseEntity.ok(criaTransferencia(transferenciaDto));
+        try {
+            return ResponseEntity.ok(this.criaTransferencia(transferenciaDto));
+        } catch (Exception e) {
+            response.addError(e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
     }
 }

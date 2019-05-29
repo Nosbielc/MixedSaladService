@@ -16,6 +16,7 @@ import com.nosbielc.mixed.salad.bancocentral.utils.Monetario;
 import com.nosbielc.mixed.salad.bancocentral.utils.SecretKeyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Optional;
 
@@ -30,9 +31,11 @@ public class TransferenciaControllerUtils {
     @Autowired
     private TransferenciaServiceImpl transferenciaService;
 
+    private Boolean byPass = Boolean.TRUE;
+
     public static Content<TransferenciaReponseDto> toContentTransferenciaResponseDto(Transferencia transferencia) {
         Content<TransferenciaReponseDto> content = new Content<>();
-        content.setContent(toTransferenciaResponseDto(transferencia));
+        content.setObjects(toTransferenciaResponseDto(transferencia));
         return content;
     }
 
@@ -45,7 +48,7 @@ public class TransferenciaControllerUtils {
                 new BancoDto(transferencia.getBancoDestino()), transferencia.getContaDestino());
     }
 
-    public Response<Content<TransferenciaReponseDto>> criaTransferencia(TransferenciaDto transferenciaDto) throws Exception {
+    public Response<Content<TransferenciaReponseDto>> criaTransferencia(TransferenciaDto transferenciaDto) throws ParseException {
         Response<Content<TransferenciaReponseDto>> response = new Response<>();
 
         Optional<Banco> bancoOrigem = bancoService.findById(transferenciaDto.getBancoOrigem());
@@ -55,38 +58,31 @@ public class TransferenciaControllerUtils {
             if (bancoDestino.isPresent()) {
 
                 Float valor = Monetario.converteToBig(transferenciaDto.getValorTransferencia()).floatValue();
+                Optional<TokenSeguranca> tokenSeguranca =
+                        this.tokenSegurancaService.findByBancoAndStrConta(bancoOrigem.get(), transferenciaDto.getContaOrigem());
 
-                if (valor > 0 ) {
+                if (tokenSeguranca.isPresent() && SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(),
+                        transferenciaDto.getCode().intValue()) || byPass) {
+                    String hashIdTransferencia =
+                            SecretKeyUtils.getHashTransferencia(
+                                    transferenciaDto.getContaOrigem(),
+                                    transferenciaDto.getCode().toString(),
+                                    transferenciaDto.getContaDestino(),
+                                    String.valueOf(System.currentTimeMillis()));
 
-                    Optional<TokenSeguranca> tokenSeguranca =
-                            this.tokenSegurancaService.findByBancoAndStrConta(bancoOrigem.get(), transferenciaDto.getContaOrigem());
-
-                    if (tokenSeguranca.isPresent() && SecretKeyUtils.isCodeValid(tokenSeguranca.get().getStrToken(),
-                            transferenciaDto.getCode().intValue()) || Boolean.TRUE) {
-                        String hashIdTransferencia =
-                                SecretKeyUtils.getHashTransferencia(
-                                        transferenciaDto.getContaOrigem(),
-                                        transferenciaDto.getCode().toString(),
-                                        transferenciaDto.getContaDestino(),
-                                        String.valueOf(System.currentTimeMillis()));
-
-                        Transferencia transferencia = this.transferenciaService.persist(new Transferencia(
-                                hashIdTransferencia,
-                                valor,
-                                bancoOrigem.get(),
-                                transferenciaDto.getContaOrigem(),
-                                TransferenciaStatus.REQUESTED,
-                                        bancoDestino.get(),
-                                transferenciaDto.getContaDestino(),
-                                new Date()
-                                ));
-                        response.getData().setContent(new TransferenciaReponseDto(transferencia));
-                    } else {
-                        response.addError("Sua chave não é valida. :p");
-                    }
-
+                    Transferencia transferencia = this.transferenciaService.persist(new Transferencia(
+                            hashIdTransferencia,
+                            valor,
+                            bancoOrigem.get(),
+                            transferenciaDto.getContaOrigem(),
+                            TransferenciaStatus.REQUESTED,
+                            bancoDestino.get(),
+                            transferenciaDto.getContaDestino(),
+                            new Date()
+                    ));
+                    response.getData().setObjects(new TransferenciaReponseDto(transferencia));
                 } else {
-                    response.addError("O valor da transferencia não pode ser menos que 0. :p");
+                    response.addError("Sua chave não é valida. :p");
                 }
 
             } else {

@@ -128,13 +128,6 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
-
-<!--                        <resource>-->
-<!--                            <targetPath>/</targetPath>-->
-<!--                            <directory>../compose</directory>-->
-<!--                            <include>wait</include>-->
-<!--                        </resource>-->
-
                     </resources>
                 </configuration>
             </plugin>

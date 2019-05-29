@@ -53,7 +53,7 @@ public class TokenSegurancaControllerUtils {
 
     public Content<TokenDto> toContentTokenDto(TokenSeguranca tokenSeguranca) {
         Content<TokenDto> content = new Content<>();
-        content.setContent(new TokenDto(
+        content.setObjects(new TokenDto(
                 tokenSeguranca.getId(), tokenSeguranca.getStrToken(),
                 tokenSeguranca.getStrConta()));
         return content;

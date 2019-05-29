@@ -24,7 +24,7 @@ public interface ITokenSegurancaController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     ResponseEntity<Response<Content<TokenDto>>> gerarToken(@Valid @RequestBody NovoTokenDto novoTokenDto,
-                                                           BindingResult result) throws Exception;
+                                                           BindingResult result);
 
     @ApiOperation(value = "Validação do Token", nickname = "validarToken", notes = "Metodo para validar Token da conta para o banco,")
     @ApiResponses(value = {
@@ -34,5 +34,5 @@ public interface ITokenSegurancaController {
             @ApiResponse(code = 404, message = "Not Found"),
             @ApiResponse(code = 500, message = "Failure")})
     ResponseEntity<Response<String>> validarToken(@Valid @RequestBody ValidaTokenDto validaTokenDto,
-                                                  BindingResult result) throws Exception;
+                                                  BindingResult result);
 }

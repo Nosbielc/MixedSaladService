@@ -15,7 +15,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -82,11 +81,11 @@ public class BancoControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.content.id").value(IsNull.nullValue()))
-                .andExpect(jsonPath("$.data.content.codBanco").value(ID_BANCO))
-                .andExpect(jsonPath("$.data.content.strNomeBase").value(NOME_BASE))
-                .andExpect(jsonPath("$.data.content.strNome").value(NOME))
-                .andExpect(jsonPath("$.data.content.ativo").value(Boolean.TRUE))
+                .andExpect(jsonPath("$.data.objects.id").value(IsNull.nullValue()))
+                .andExpect(jsonPath("$.data.objects.codBanco").value(ID_BANCO))
+                .andExpect(jsonPath("$.data.objects.strNomeBase").value(NOME_BASE))
+                .andExpect(jsonPath("$.data.objects.strNome").value(NOME))
+                .andExpect(jsonPath("$.data.objects.ativo").value(Boolean.TRUE))
                 .andExpect(jsonPath("$.errors").isEmpty());
     }
 
@@ -107,6 +106,7 @@ public class BancoControllerTest {
     }
 
     @Test
+    @WithMockUser
     public void testCriarNovoBanco() throws Exception {
 
         Banco banco = new Banco(ID_BANCO, NOME_BASE, NOME, Boolean.TRUE);
@@ -119,11 +119,11 @@ public class BancoControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.data.content.id").value(IsNull.nullValue()))
-                .andExpect(jsonPath("$.data.content.codBanco").value(ID_BANCO))
-                .andExpect(jsonPath("$.data.content.strNomeBase").value(NOME_BASE))
-                .andExpect(jsonPath("$.data.content.strNome").value(NOME))
-                .andExpect(jsonPath("$.data.content.ativo").value(Boolean.TRUE))
+                .andExpect(jsonPath("$.data.objects.id").value(IsNull.nullValue()))
+                .andExpect(jsonPath("$.data.objects.codBanco").value(ID_BANCO))
+                .andExpect(jsonPath("$.data.objects.strNomeBase").value(NOME_BASE))
+                .andExpect(jsonPath("$.data.objects.strNome").value(NOME))
+                .andExpect(jsonPath("$.data.objects.ativo").value(Boolean.TRUE))
                 .andExpect(jsonPath("$.errors").isEmpty());
 
     }

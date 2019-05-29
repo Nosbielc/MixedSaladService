@@ -13,22 +13,25 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Profile("!test")
 public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
 
-    private final static String resourceId = "resources";
+    private String scopeRead = "#oauth2.hasScope('read')";
+    private String scopeWrite = "#oauth2.hasScope('write')";
+    private String api = "/api/**";
+    private String resourceId = "resources";
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.requestMatchers()
-                .antMatchers("/api/**")
+                .antMatchers(api)
                 .and()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
-                .antMatchers(HttpMethod.GET, "/api/**").access("#oauth2.hasScope('read')")
-                .antMatchers(HttpMethod.OPTIONS, "/api/**").access("#oauth2.hasScope('read')")
-                .antMatchers(HttpMethod.POST, "/api/**").access("#oauth2.hasScope('write')")
-                .antMatchers(HttpMethod.PUT, "/api/**").access("#oauth2.hasScope('write')")
-                .antMatchers(HttpMethod.PATCH, "/api/**").access("#oauth2.hasScope('write')")
-                .antMatchers(HttpMethod.DELETE, "/api/**").access("#oauth2.hasScope('write')");
+                .antMatchers(HttpMethod.GET, api).access(scopeRead)
+                .antMatchers(HttpMethod.OPTIONS, api).access(scopeRead)
+                .antMatchers(HttpMethod.POST, api).access(scopeWrite)
+                .antMatchers(HttpMethod.PUT, api).access(scopeWrite)
+                .antMatchers(HttpMethod.PATCH, api).access(scopeWrite)
+                .antMatchers(HttpMethod.DELETE, api).access(scopeWrite);
     }
 
     @Override

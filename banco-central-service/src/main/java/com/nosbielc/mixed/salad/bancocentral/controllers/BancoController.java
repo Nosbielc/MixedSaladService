@@ -44,7 +44,7 @@ public class BancoController extends BancoControllerUtils implements IBancoContr
         PageRequest pageRequest = PageRequest.of(pag, this.fetchForPage, Sort.Direction.valueOf(dir), ord);
         Page<Banco> bancos = this.bancoService.findAllPageable(pageRequest);
         Page<BancoDto> bancosDtos = bancos.map(
-                banc -> toBancoDto(banc)
+                this::toBancoDto
         );
 
         response.setData(bancosDtos);
@@ -68,7 +68,7 @@ public class BancoController extends BancoControllerUtils implements IBancoContr
     @Override
     @PostMapping
     public ResponseEntity<Response<Content<BancoDto>>> criar(@Valid @RequestBody NovoBancoDto novoBancoDto, BindingResult result) {
-        log.info("Registrando o banco: {}", novoBancoDto.toString());
+        log.info("Registrando o banco: {}", novoBancoDto);
         Response<Content<BancoDto>> response = new Response<>();
         response.setData(
                 toContentBancoDto(

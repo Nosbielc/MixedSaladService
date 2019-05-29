@@ -6,14 +6,15 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.math.BigInteger;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.StringJoiner;
 
-public abstract class SecretKeyUtils {
+public class SecretKeyUtils {
 
     public static String secretKeytoString(SecretKey secretKey) {
-//        SecretKey secretKey = KeyGenerator.getInstance("AES").generateKey();
+        /**
+         *  SecretKey secretKey = KeyGenerator.getInstance("AES").generateKey();
+         */
         // get base64 encoded version of the key
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());
     }
@@ -53,4 +54,6 @@ public abstract class SecretKeyUtils {
         }
     }
 
+    private SecretKeyUtils() {
+    }
 }

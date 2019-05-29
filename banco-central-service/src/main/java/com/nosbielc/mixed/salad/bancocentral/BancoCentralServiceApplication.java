@@ -18,8 +18,7 @@ import java.util.TimeZone;
 @EnableCircuitBreaker
 public class BancoCentralServiceApplication {
 
-    public static void main(String[] args) throws Exception {
-//        TimeUnit.SECONDS.sleep(30);
+    public static void main(String[] args) {
         ServerPortCustomizer.setRandomPort(); // comentado para evitar erro de portas no docker-compose
         SpringApplication.run(BancoCentralServiceApplication.class, args);
     }

@@ -71,7 +71,10 @@ public class HMAC {
 
     public static byte[] sha1(byte[] input) throws NoSuchAlgorithmException {
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
-        byte[] result = mDigest.digest(input);
-        return result;
+        return mDigest.digest(input);
+    }
+
+    private HMAC() {
+        // Construtor
     }
 }

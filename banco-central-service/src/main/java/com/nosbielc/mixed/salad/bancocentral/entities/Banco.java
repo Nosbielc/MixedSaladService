@@ -27,13 +27,13 @@ public class Banco implements Serializable {
     private Boolean ativo;
 
     @OneToMany(mappedBy = "bancoOrigem", cascade = CascadeType.ALL)
-    private List<Transferencia> transferenciaOrigem = new ArrayList<Transferencia>();
+    private List<Transferencia> transferenciaOrigem = new ArrayList<>();
 
     @OneToMany(mappedBy = "bancoDestino", cascade = CascadeType.ALL)
-    private List<Transferencia> transferenciaDestino = new ArrayList<Transferencia>();
+    private List<Transferencia> transferenciaDestino = new ArrayList<>();
 
     @OneToMany(mappedBy = "banco", cascade = CascadeType.ALL)
-    private List<TokenSeguranca> tokenSeguranca = new ArrayList<TokenSeguranca>();;
+    private List<TokenSeguranca> tokenSeguranca = new ArrayList<>();
 
     public Banco() {
     }

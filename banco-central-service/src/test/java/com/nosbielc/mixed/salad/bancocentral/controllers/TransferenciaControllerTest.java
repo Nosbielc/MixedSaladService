@@ -56,6 +56,7 @@ public class TransferenciaControllerTest {
     private static final Long ID_BANCO = 1L;
     private static final String NOME_BASE = "CENTRAL";
     private static final String NOME = "BANCO-CENTRAL";
+    private static final String AUTENTICACAO = "xxxxxxxx";
 
     Transferencia transferencia;
     Banco bancoOrigem;
@@ -70,7 +71,7 @@ public class TransferenciaControllerTest {
         bancoDestino.setId(ID_BANCO);
 
         transferencia = new Transferencia(
-                "xxxxxxxx", 120.99f, bancoOrigem,
+                AUTENTICACAO, 120.99f, bancoOrigem,
                 "00000000000", TransferenciaStatus.PROCESSING_CONCLUDED,
                 bancoDestino, "11111111111", new Date());
         transferencia.setId(1L);
@@ -84,6 +85,29 @@ public class TransferenciaControllerTest {
         BDDMockito.given(this.transferenciaService.findAllPageable(Mockito.any())).willReturn(transferenciaPage);
 
         mvc.perform(MockMvcRequestBuilders.get(URL_BASE.concat("?pag=0&ord=id&dir=ASC"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.content[0].id").value(transferencia.getId()))
+                .andExpect(jsonPath("$.data.content[0].autenticacao").value(transferencia.getAutenticacao()))
+                .andExpect(jsonPath("$.data.content[0].valorTransferencia").value(transferencia.getValorTransferencia()))
+                .andExpect(jsonPath("$.data.content[0].dateTimeTransferencia").value(transferencia.getDateTimeTransferencia()))
+                .andExpect(jsonPath("$.data.content[0].contaDestino").value(transferencia.getContaDestino()))
+                .andExpect(jsonPath("$.data.content[0].contaOrigem").value(transferencia.getContaOrigem()))
+                .andExpect(jsonPath("$.data.content[0].bancoOrigem").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.data.content[0].bancoDestino").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.errors").isEmpty());
+    }
+
+    @Test
+    @WithMockUser
+    public void testListarTransferenciasComAutenticacao() throws Exception {
+        Page<Transferencia> transferenciaPage = new PageImpl<>(Arrays.asList(transferencia));
+
+        BDDMockito.given(this.transferenciaService.findOneAutenticacao(Mockito.any(), Mockito.any())).willReturn(transferenciaPage);
+
+        mvc.perform(MockMvcRequestBuilders.get(URL_BASE.concat("?pag=0&ord=id&dir=ASC&autenticacao=").concat(AUTENTICACAO))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())

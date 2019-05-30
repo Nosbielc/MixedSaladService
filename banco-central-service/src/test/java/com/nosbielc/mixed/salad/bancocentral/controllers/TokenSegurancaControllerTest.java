@@ -105,14 +105,14 @@ public class TokenSegurancaControllerTest {
 
         Optional<Banco> bancoContext = Optional.of(banco);
 
-        tokenSeguranca.setStrToken("KURGSWNE2GBSG5IM");
+        tokenSeguranca.setStrToken(SecretKeyUtils.getKey());
         Optional<TokenSeguranca> tokenContext = Optional.of(tokenSeguranca);
 
         BDDMockito.given(this.bancoService.findById(Mockito.any())).willReturn(bancoContext);
         BDDMockito.given(this.tokenSegurancaService.findByBancoAndStrConta(Mockito.any(Banco.class), Mockito.anyString()))
                 .willReturn(tokenContext);
 
-        ValidaTokenDto validaTokenDto = new ValidaTokenDto(CONTA, ID_BANCO, Long.parseLong("KURGSWNE2GBSG5IM"));
+        ValidaTokenDto validaTokenDto = new ValidaTokenDto(CONTA, ID_BANCO, Long.parseLong(TOKEN));
 
         mvc.perform(MockMvcRequestBuilders.post(URL_BASE.concat("/validar"))
                 .content(obterJsonValidaTokenDtoParaRequisicaoPost(validaTokenDto))

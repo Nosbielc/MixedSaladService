@@ -38,13 +38,16 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
 
     @Override
     @GetMapping
-    public ResponseEntity<Response<Page<TransferenciaReponseDto>>> listar(Integer pag, String ord, String dir,
-                                                                          String autenticacao, Long id) {
+    public ResponseEntity<Response<Page<TransferenciaReponseDto>>> listar(@RequestParam(value = "pag", defaultValue = "0") Integer pag,
+                                                                          @RequestParam(value = "ord", defaultValue = "id") String ord,
+                                                                          @RequestParam(value = "dir", defaultValue = "DESC") String dir,
+                                                                          @RequestParam(value = "autenticacao", defaultValue = "") String autenticacao,
+                                                                          @RequestParam(value = "id", defaultValue = "0") Long id) {
         Response<Page<TransferenciaReponseDto>> response = new Response<>();
         PageRequest pageRequest = PageRequest.of(pag, this.fetchForPage, Sort.Direction.valueOf(dir), ord);
         Page<Transferencia> transferencias = Page.empty();
 
-        if (!autenticacao.equalsIgnoreCase("")) {
+        if (autenticacao != null && !autenticacao.equalsIgnoreCase("")) {
             transferencias = this.trasnferenciaService.findOneAutenticacao(autenticacao, pageRequest);
         } else if (id > 0) {
             Optional<Transferencia> transTrat = this.trasnferenciaService.findById(id);
@@ -64,7 +67,7 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
 
     @Override
     @GetMapping("/{autenticacao}")
-    public ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(String autenticacao) {
+    public ResponseEntity<Response<Content<TransferenciaReponseDto>>> detalhe(@PathVariable(value = "autenticacao") String autenticacao) {
         Response<Content<TransferenciaReponseDto>> response = new Response<>();
         Optional<Transferencia> transferencia = this.trasnferenciaService.findByAutenticacao(autenticacao);
 

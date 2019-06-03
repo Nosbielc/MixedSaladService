@@ -50,6 +50,7 @@ public class TransferenciaControllerUtils {
 
     public Response<Content<TransferenciaReponseDto>> criaTransferencia(TransferenciaDto transferenciaDto) throws ParseException {
         Response<Content<TransferenciaReponseDto>> response = new Response<>();
+        Content<TransferenciaReponseDto> content = new Content<>();
 
         Optional<Banco> bancoOrigem = bancoService.findById(transferenciaDto.getBancoOrigem());
         Optional<Banco> bancoDestino = bancoService.findById(transferenciaDto.getBancoDestino());
@@ -80,7 +81,8 @@ public class TransferenciaControllerUtils {
                             transferenciaDto.getContaDestino(),
                             new Date()
                     ));
-                    response.getData().setObjects(new TransferenciaReponseDto(transferencia));
+                    content.setObjects(new TransferenciaReponseDto(transferencia));
+                    response.setData(content);
                 } else {
                     response.addError("Sua chave não é valida. :p");
                 }

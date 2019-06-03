@@ -1,11 +1,17 @@
 package com.nosbielc.mixed.salad.bancocentral.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nosbielc.mixed.salad.bancocentral.dtos.NovoTokenDto;
+import com.nosbielc.mixed.salad.bancocentral.dtos.TransferenciaDto;
 import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
+import com.nosbielc.mixed.salad.bancocentral.entities.TokenSeguranca;
 import com.nosbielc.mixed.salad.bancocentral.entities.Transferencia;
 import com.nosbielc.mixed.salad.bancocentral.enums.TransferenciaStatus;
 import com.nosbielc.mixed.salad.bancocentral.services.impl.BancoServiceImpl;
 import com.nosbielc.mixed.salad.bancocentral.services.impl.TokenSegurancaServiceImpl;
 import com.nosbielc.mixed.salad.bancocentral.services.impl.TransferenciaServiceImpl;
+import com.nosbielc.mixed.salad.bancocentral.utils.SecretKeyUtils;
 import org.hamcrest.core.IsNull;
 import org.junit.Before;
 import org.junit.Test;
@@ -58,10 +64,14 @@ public class TransferenciaControllerTest {
     private static final String NOME_BASE = "CENTRAL";
     private static final String NOME = "BANCO-CENTRAL";
     private static final String AUTENTICACAO = "xxxxxxxx";
+    private static final Long ID_TOKEN = 1L;
+    private static final String TOKEN = "10909990987878";
+    private static final String CONTA = "00000000000";
 
     Transferencia transferencia;
     Banco bancoOrigem;
     Banco bancoDestino;
+    TokenSeguranca tokenSeguranca;
 
     @Before
     public void initTest() {
@@ -76,6 +86,9 @@ public class TransferenciaControllerTest {
                 "00000000000", TransferenciaStatus.PROCESSING_CONCLUDED,
                 bancoDestino, "11111111111", new Date());
         transferencia.setId(1L);
+
+        tokenSeguranca = new TokenSeguranca(SecretKeyUtils.getKey(), CONTA,  bancoOrigem);
+        tokenSeguranca.setId(ID_TOKEN);
     }
 
     @Test
@@ -149,11 +162,93 @@ public class TransferenciaControllerTest {
 
     @Test
     @WithMockUser
-    public void detalhe() {
+    public void testDetalhePorAutenticacao() throws Exception {
+        Optional<Transferencia> transferenciaOptional = Optional.of(transferencia);
+
+        BDDMockito.given(
+                this.transferenciaService.findByAutenticacao(Mockito.anyString())).willReturn(transferenciaOptional);
+
+        mvc.perform(MockMvcRequestBuilders.get(URL_BASE.concat("/minhaautenticacao"))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.objects.id").value(transferencia.getId()))
+                .andExpect(jsonPath("$.data.objects.autenticacao").value(transferencia.getAutenticacao()))
+                .andExpect(jsonPath("$.data.objects.valorTransferencia").value(transferencia.getValorTransferencia()))
+                .andExpect(jsonPath("$.data.objects.dateTimeTransferencia").value(transferencia.getDateTimeTransferencia()))
+                .andExpect(jsonPath("$.data.objects.contaDestino").value(transferencia.getContaDestino()))
+                .andExpect(jsonPath("$.data.objects.contaOrigem").value(transferencia.getContaOrigem()))
+                .andExpect(jsonPath("$.data.objects.bancoOrigem").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.data.objects.bancoDestino").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.errors").isEmpty());
+
     }
 
     @Test
     @WithMockUser
-    public void criar() {
+    public void testCriarTransferenciaSucesso() throws Exception {
+
+        Optional<Banco> bancoContext = Optional.of(bancoOrigem);
+        Optional<TokenSeguranca> tokenContext = Optional.of(tokenSeguranca);
+
+        BDDMockito.given(this.bancoService.findById(Mockito.any())).willReturn(bancoContext);
+        BDDMockito.given(this.tokenSegurancaService.findByBancoAndStrConta(Mockito.any(Banco.class), Mockito.anyString()))
+                .willReturn(tokenContext);
+        BDDMockito.given(this.transferenciaService.persist(Mockito.any(Transferencia.class))).willReturn(transferencia);
+
+        TransferenciaDto transferenciaDto = new TransferenciaDto();
+        transferenciaDto.setContaDestino(transferencia.getContaDestino());
+        transferenciaDto.setContaOrigem(transferencia.getContaOrigem());
+        transferenciaDto.setValorTransferencia(transferencia.getValorTransferencia().toString());
+
+        mvc.perform(MockMvcRequestBuilders.post(URL_BASE)
+                .content(obterJsonTransferenciaDtoParaRequisicaoPost(transferenciaDto))
+                .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                .accept(org.springframework.http.MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.objects.id").value(ID_TOKEN))
+                .andExpect(jsonPath("$.data.objects.autenticacao").value(transferencia.getAutenticacao()))
+                .andExpect(jsonPath("$.data.objects.valorTransferencia").value(transferencia.getValorTransferencia()))
+                .andExpect(jsonPath("$.data.objects.dateTimeTransferencia").value(transferencia.getDateTimeTransferencia()))
+                .andExpect(jsonPath("$.data.objects.contaOrigem").value(transferencia.getContaOrigem()))
+                .andExpect(jsonPath("$.data.objects.contaDestino").value(transferencia.getContaDestino()))
+                .andExpect(jsonPath("$.data.objects.contaDestino").value(transferencia.getContaDestino()))
+                .andExpect(jsonPath("$.data.objects.transferenciaStatus").value(transferencia.getTransferenciaStatus().name()))
+                .andExpect(jsonPath("$.data.objects.bancoOrigem").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.data.objects.bancoDestino").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.errors").isEmpty());
+
+    }
+
+    @Test
+    @WithMockUser
+    public void testCriarTransferenciaErro400() throws Exception {
+
+        Optional<Banco> bancoContext = Optional.of(bancoOrigem);
+        Optional<TokenSeguranca> tokenContext = Optional.of(tokenSeguranca);
+
+        BDDMockito.given(this.bancoService.findById(Mockito.any())).willReturn(bancoContext);
+        BDDMockito.given(this.tokenSegurancaService.findByBancoAndStrConta(Mockito.any(Banco.class), Mockito.anyString()))
+                .willReturn(tokenContext);
+        BDDMockito.given(this.transferenciaService.persist(Mockito.any(Transferencia.class))).willReturn(transferencia);
+
+        TransferenciaDto transferenciaDto = new TransferenciaDto();
+        transferenciaDto.setContaDestino(null);
+        transferenciaDto.setContaOrigem(transferencia.getContaOrigem());
+        transferenciaDto.setValorTransferencia(null);
+
+        mvc.perform(MockMvcRequestBuilders.post(URL_BASE)
+                .content(obterJsonTransferenciaDtoParaRequisicaoPost(transferenciaDto))
+                .contentType(org.springframework.http.MediaType.APPLICATION_JSON)
+                .accept(org.springframework.http.MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isBadRequest());
+
+    }
+
+    private String obterJsonTransferenciaDtoParaRequisicaoPost(TransferenciaDto transferenciaDto) throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(transferenciaDto);
     }
 }

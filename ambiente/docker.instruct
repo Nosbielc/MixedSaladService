@@ -22,3 +22,9 @@ docker run -d --name gateway-service -p 9092:9092 -e "SPRING_PROFILES_ACTIVE=dev
 docker run -d --name zipkin-service -p 9095:9095 -e "SPRING_PROFILES_ACTIVE=dev" nosbielc/mixed-salad-zipkin-service:latest
 docker run -d --name auth-service -p 9093:9093 -e "SPRING_PROFILES_ACTIVE=dev" nosbielc/mixed-salad-auth-service:latest
 docker run -d --name banco-central-service -p 8001:8001 -e "SPRING_PROFILES_ACTIVE=dev" nosbielc/mixed-salad-banco-central-service:latest
+
+What's going on, is that IntelliJ is somehow intelligent and display interesting variables when debugging your code. You will see in your "Variables" view, that "ex.getValid()" is displayed and give "true". So your first answer is consumed by the IntelliJ debugger, which explains then that your test passes when only run.
+
+This same test fails in Eclipse, if you add the "Watch expression" "ex.getValid()".
+
+If you want to debug in IntelliJ, I suggest you to narrow down your problem AND stub with just one answer.

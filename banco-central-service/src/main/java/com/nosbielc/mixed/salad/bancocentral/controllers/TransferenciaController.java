@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Arrays;
 import java.util.Optional;
 
 @RestController
@@ -52,7 +54,7 @@ public class TransferenciaController extends TransferenciaControllerUtils implem
         } else if (id > 0) {
             Optional<Transferencia> transTrat = this.trasnferenciaService.findById(id);
             if (transTrat.isPresent()) {
-                transferencias = (Page<Transferencia>) transTrat.get();
+                transferencias = new PageImpl<>(Arrays.asList(transTrat.get()));
             }
         } else {
             transferencias = this.trasnferenciaService.findAllPageable(pageRequest);

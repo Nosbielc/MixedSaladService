@@ -28,6 +28,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import javax.ws.rs.core.MediaType;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -108,6 +109,29 @@ public class TransferenciaControllerTest {
         BDDMockito.given(this.transferenciaService.findOneAutenticacao(Mockito.any(), Mockito.any())).willReturn(transferenciaPage);
 
         mvc.perform(MockMvcRequestBuilders.get(URL_BASE.concat("?pag=0&ord=id&dir=ASC&autenticacao=").concat(AUTENTICACAO))
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.content[0].id").value(transferencia.getId()))
+                .andExpect(jsonPath("$.data.content[0].autenticacao").value(transferencia.getAutenticacao()))
+                .andExpect(jsonPath("$.data.content[0].valorTransferencia").value(transferencia.getValorTransferencia()))
+                .andExpect(jsonPath("$.data.content[0].dateTimeTransferencia").value(transferencia.getDateTimeTransferencia()))
+                .andExpect(jsonPath("$.data.content[0].contaDestino").value(transferencia.getContaDestino()))
+                .andExpect(jsonPath("$.data.content[0].contaOrigem").value(transferencia.getContaOrigem()))
+                .andExpect(jsonPath("$.data.content[0].bancoOrigem").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.data.content[0].bancoDestino").value(IsNull.notNullValue()))
+                .andExpect(jsonPath("$.errors").isEmpty());
+    }
+
+    @Test
+    @WithMockUser
+    public void testListarTransferenciasPorId() throws Exception {
+        Optional<Transferencia> transferenciaOptional = Optional.of(transferencia);
+
+        BDDMockito.given(this.transferenciaService.findById(Mockito.anyLong())).willReturn(transferenciaOptional);
+
+        mvc.perform(MockMvcRequestBuilders.get(URL_BASE.concat("?pag=0&ord=id&dir=ASC&id=1"))
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(MockMvcResultHandlers.print())

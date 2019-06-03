@@ -35,7 +35,7 @@ public class SecretKeyUtils {
         return new GoogleAuthenticator().authorize(key, code);
     }
 
-    public static String getHashTransferencia(String key1, String key2, String key3, String key4) {
+    public static String getHashTransferencia(String key1, String key2, String key3, String key4, String algorithm) {
         String s =
                 new StringJoiner(":","","")
                         .add(key1)
@@ -45,7 +45,7 @@ public class SecretKeyUtils {
                         .add(key3)
                         .toString();
         try {
-            MessageDigest m = MessageDigest.getInstance("MD5");
+            MessageDigest m = MessageDigest.getInstance(algorithm);
             m.update( s.getBytes(), 0 , s.length() );
             byte[] digest = m.digest();
             return new BigInteger(1,digest).toString(120);

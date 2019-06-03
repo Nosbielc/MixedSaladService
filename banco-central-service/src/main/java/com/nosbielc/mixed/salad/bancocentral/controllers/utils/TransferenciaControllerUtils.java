@@ -69,7 +69,8 @@ public class TransferenciaControllerUtils {
                                     transferenciaDto.getContaOrigem(),
                                     transferenciaDto.getCode().toString(),
                                     transferenciaDto.getContaDestino(),
-                                    String.valueOf(System.currentTimeMillis()));
+                                    String.valueOf(System.currentTimeMillis()),
+                                    "MD5");
 
                     Transferencia transferencia = this.transferenciaService.persist(new Transferencia(
                             hashIdTransferencia,

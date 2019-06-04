@@ -15,7 +15,6 @@ public class AuthServiceApplicationTests {
 
     @Test
     public void contextLoads() {
-        assertTrue(Boolean.TRUE);
     }
 
 }

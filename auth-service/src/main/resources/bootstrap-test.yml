@@ -1,0 +1,40 @@
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/auth-service-test.log
+
+security:
+  oauth2:
+    client:
+      access-token-validity-seconds: 1800
+      authorized-grant-types: password,refresh_token
+      client-id: mixedSalad
+      client-secret: $2a$10$p9Paskd33kggkadgadknqeqe9999qdq2dk0fQNAQSesI4vuvKA0OZanDD2
+      resource-ids: resources
+      scope: read,write
+
+spring:
+  application:
+    name: auth-service
+  profiles:
+    active: test
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    platform: h2
+    username: sa
+    password: sa
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        type: trace
+        jdbc:
+          time_zone: UTC-3

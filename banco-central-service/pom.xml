@@ -5,7 +5,7 @@
 
     <groupId>com.nosbielc.mixed.salad</groupId>
     <artifactId>banco-central-service</artifactId>
-    <version>1.1.0.19052019</version>
+    <version>1.2.0.11062019</version>
     <packaging>jar</packaging>
 
     <name>banco-central-service</name>

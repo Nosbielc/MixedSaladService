@@ -14,11 +14,11 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
-#    healthcheck:
-#      test: ["CMD", "curl", "--fail", "http://localhost:9090"]
-#      interval: 2s
-#      timeout: 5s
-#      retries: 30
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:9090"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
 
   admin-service:
     image: nosbielc/mixed-salad-admin-service:latest
@@ -30,7 +30,8 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
+      config-service:
+        condition: service_healthy
 
   discovery-service:
     image: nosbielc/mixed-salad-discovery-service:latest
@@ -42,22 +43,27 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
-      - admin-service
+      config-service:
+        condition: service_healthy
+      admin-service:
+        condition: service_started
 
   gateway-service:
     image: nosbielc/mixed-salad-gateway-service:latest
     networks:
       - msNet
     ports:
-      - 9092:9092
+      - 80:9092
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
+      config-service:
+        condition: service_healthy
+      admin-service:
+        condition: service_started
+      discovery-service:
+        condition: service_started
 
   zipkin-service:
     image: nosbielc/mixed-salad-zipkin-service:latest
@@ -69,10 +75,14 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
+      config-service:
+        condition: service_healthy
+      admin-service:
+        condition: service_started
+      discovery-service:
+        condition: service_started
+      gateway-service:
+        condition: service_started
 
   auth-service:
     image: nosbielc/mixed-salad-auth-service:latest
@@ -84,11 +94,16 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-      - zipkin-service
+      config-service:
+        condition: service_healthy
+      admin-service:
+        condition: service_started
+      discovery-service:
+        condition: service_started
+      gateway-service:
+        condition: service_started
+      zipkin-service:
+        condition: service_started
 
   banco-central-service:
     image: nosbielc/mixed-salad-banco-central-service:latest
@@ -100,9 +115,15 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      - config-service
-      - admin-service
-      - discovery-service
-      - gateway-service
-      - zipkin-service
-      - auth-service
+      config-service:
+        condition: service_healthy
+      admin-service:
+        condition: service_started
+      discovery-service:
+        condition: service_started
+      gateway-service:
+        condition: service_started
+      zipkin-service:
+        condition: service_started
+      auth-service:
+        condition: service_started

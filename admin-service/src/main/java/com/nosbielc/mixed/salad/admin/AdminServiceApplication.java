@@ -12,13 +12,16 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
+import java.util.concurrent.TimeUnit;
+
 @Configuration
 @EnableAutoConfiguration
 @EnableDiscoveryClient
 @EnableAdminServer
 public class AdminServiceApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        TimeUnit.MINUTES.sleep(1);
         SpringApplication.run(AdminServiceApplication.class, args);
     }
 

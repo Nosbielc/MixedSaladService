@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
 @EnableMicroservicesDashboardServer
 public class DashboardServiceApplication {
 
-    public static void main(String[] args) throws Exception {
-        TimeUnit.SECONDS.sleep(30);
+    public static void main(String[] args) throws InterruptedException {
+        TimeUnit.MINUTES.sleep(1);
         SpringApplication.run(DashboardServiceApplication.class, args);
     }
 

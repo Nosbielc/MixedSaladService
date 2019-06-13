@@ -10,6 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 import javax.annotation.PostConstruct;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -18,7 +19,8 @@ import java.util.TimeZone;
 @EnableCircuitBreaker
 public class BancoCentralServiceApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        TimeUnit.MINUTES.sleep(1);
         ServerPortCustomizer.setRandomPort(); // comentado para evitar erro de portas no docker-compose
         SpringApplication.run(BancoCentralServiceApplication.class, args);
     }

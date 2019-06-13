@@ -8,17 +8,18 @@ services:
   config-service:
     image: nosbielc/mixed-salad-config-service:latest
     networks:
-    - msNet
+      - msNet
     ports:
       - 9090:9090
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
-    healthcheck:
-      test: ["CMD", "curl", "--fail", "http://localhost:9090"]
-      interval: 2s
-      timeout: 5s
-      retries: 30
+#    healthcheck:
+#      test: CMD curl --fail -s http://localhost:9090/actuator/health/ || exit 1
+#      #      test: [ "CMD", "curl", "--fail", "-s", "http://localhost:9090/actuator/health || exit 1" ]
+#      interval: 1m30s
+#      timeout: 10s
+#      retries: 300
 
   admin-service:
     image: nosbielc/mixed-salad-admin-service:latest
@@ -30,8 +31,7 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
+      - config-service
 
   discovery-service:
     image: nosbielc/mixed-salad-discovery-service:latest
@@ -43,27 +43,22 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
-      admin-service:
-        condition: service_started
+      - config-service
+      - admin-service
 
   gateway-service:
     image: nosbielc/mixed-salad-gateway-service:latest
     networks:
       - msNet
     ports:
-      - 80:9092
+      - 9092:9092
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
-      admin-service:
-        condition: service_started
-      discovery-service:
-        condition: service_started
+      - config-service
+      - admin-service
+      - discovery-service
 
   zipkin-service:
     image: nosbielc/mixed-salad-zipkin-service:latest
@@ -75,14 +70,10 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
-      admin-service:
-        condition: service_started
-      discovery-service:
-        condition: service_started
-      gateway-service:
-        condition: service_started
+      - config-service
+      - admin-service
+      - discovery-service
+      - gateway-service
 
   auth-service:
     image: nosbielc/mixed-salad-auth-service:latest
@@ -94,36 +85,52 @@ services:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
-      admin-service:
-        condition: service_started
-      discovery-service:
-        condition: service_started
-      gateway-service:
-        condition: service_started
-      zipkin-service:
-        condition: service_started
+      - config-service
+      - admin-service
+      - discovery-service
+      - gateway-service
+      - zipkin-service
 
   banco-central-service:
     image: nosbielc/mixed-salad-banco-central-service:latest
     networks:
       - msNet
-#    ports:
-#      - "8001-8020"
+    ports:
+      - "8001-8020"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
     depends_on:
-      config-service:
-        condition: service_healthy
-      admin-service:
-        condition: service_started
-      discovery-service:
-        condition: service_started
-      gateway-service:
-        condition: service_started
-      zipkin-service:
-        condition: service_started
-      auth-service:
-        condition: service_started
+      - config-service
+      - admin-service
+      - discovery-service
+      - gateway-service
+      - zipkin-service
+      - auth-service
+#    deploy:
+#      mode: replicated
+#      replicas: 4
+
+  prometheus-service:
+    image: prom/prometheus
+    networks:
+      - msNet
+    ports:
+      - 7000:9090
+    volumes:
+      #      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - c:/Games:/etc/prometheus
+    environment:
+      - config.file=/etc/prometheus/prometheus.yml
+    restart: always
+
+  grafana-service:
+    image: grafana/grafana
+    networks:
+      - msNet
+    ports:
+      - 7001:3000
+    restart: always
+    depends_on:
+      - prometheus-service
+    #Veja o link https://grafana.com/dashboards/6756 para saber mais sobre o plugin indicado

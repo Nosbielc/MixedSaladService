@@ -5,7 +5,7 @@
 
     <groupId>com.nosbielc.mixed.salad</groupId>
     <artifactId>config-service</artifactId>
-    <version>1.2.0.11062019</version>
+    <version>1.3.0.13062019</version>
     <name>config-service</name>
     <description>Spring Boot Config Service</description>
 
@@ -119,10 +119,14 @@
                         <imageTag>${project.version}</imageTag>
                         <imageTag>latest</imageTag>
                     </imageTags>
+                    <runs>
+                        <run>apk add --upgrade bash</run>
+                        <run>apk add --upgrade curl</run>
+                        <run>rm -rf /var/cache/apk/*</run>
+                    </runs>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <exposes>9090</exposes>
                     <resources>
-
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>

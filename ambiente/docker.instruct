@@ -12,7 +12,7 @@ docker run -p 5601:5601 -p 9200:9200 -p 5044:5044 -it --name elk-MixedSalad sebp
 
 docker run -d -p 8080:8080 -e "SPRING_PROFILES_ACTIVE=dev" --name rest-api dockerImage:latest
 
-docker-compose up --scale banco-central-service=2 -d
+docker-compose up --scale banco-central-service=4 -d
 
 
 docker run -d --name config-service -p 9090:9090 -e "SPRING_PROFILES_ACTIVE=dev" nosbielc/mixed-salad-config-service:latest
@@ -28,3 +28,14 @@ What's going on, is that IntelliJ is somehow intelligent and display interesting
 This same test fails in Eclipse, if you add the "Watch expression" "ex.getValid()".
 
 If you want to debug in IntelliJ, I suggest you to narrow down your problem AND stub with just one answer.
+
+docker-compose up -d config-service
+docker-compose up -d admin-service
+docker-compose up -d discovery-service
+docker-compose up -d gateway-service
+docker-compose up -d zipkin-service
+docker-compose up -d auth-service
+docker-compose up -d banco-central-service
+
+
+docker-compose logs -f banco-central-service

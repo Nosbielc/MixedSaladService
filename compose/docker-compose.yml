@@ -14,12 +14,20 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=prod
     restart: always
-#    healthcheck:
-#      test: CMD curl --fail -s http://localhost:9090/actuator/health/ || exit 1
-#      #      test: [ "CMD", "curl", "--fail", "-s", "http://localhost:9090/actuator/health || exit 1" ]
-#      interval: 1m30s
-#      timeout: 10s
-#      retries: 300
+    healthcheck:
+      test: CMD curl --fail -s http://localhost:9090/actuator/health/ || exit 1
+      #      test: [ "CMD", "curl", "--fail", "-s", "http://localhost:9090/actuator/health || exit 1" ]
+      interval: 1m30s
+      timeout: 10s
+      retries: 300
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 350M
+        reservations:
+          cpus: '0.25'
+          memory: 280M
 
   admin-service:
     image: nosbielc/mixed-salad-admin-service:latest

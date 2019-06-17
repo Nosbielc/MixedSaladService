@@ -19,6 +19,8 @@
         <module>dashboard-service</module>
         <module>zipkin-service</module>
 
+        <module>oauth-service</module>
+
         <module>banco-central-service</module>
 
     </modules>

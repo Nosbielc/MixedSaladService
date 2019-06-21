@@ -1,0 +1,23 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.nosbielc.mixed.salad.oauth.resource.config.SecurityProperties",
+      "name": "security",
+      "type": "com.nosbielc.mixed.salad.oauth.resource.config.SecurityProperties"
+    },
+    {
+      "sourceType": "com.nosbielc.mixed.salad.oauth.resource.config.SecurityProperties",
+      "name": "security.jwt",
+      "sourceMethod": "getJwt()",
+      "type": "com.nosbielc.mixed.salad.oauth.resource.config.SecurityProperties$JwtProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.nosbielc.mixed.salad.oauth.resource.config.SecurityProperties$JwtProperties",
+      "name": "security.jwt.public-key",
+      "type": "org.springframework.core.io.Resource"
+    }
+  ]
+}

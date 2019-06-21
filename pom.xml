@@ -11,6 +11,7 @@
     <description>Mixed Salad Project for development and study of Java technologies.</description>
 
     <modules>
+
         <module>config-service</module>
         <module>discovery-service</module>
         <module>gateway-service</module>
@@ -19,11 +20,23 @@
         <module>dashboard-service</module>
         <module>zipkin-service</module>
 
-        <module>oauth-service</module>
+        <module>oauth-server-service</module>
+        <module>oauth-resource-service</module>
 
         <module>banco-central-service</module>
 
     </modules>
+
+    <developers>
+        <developer>
+            <id>nosbielc</id>
+            <email>cleibson.gomes.silva@gmail.com</email>
+            <name>Cleibson Gomes</name>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+        </developer>
+    </developers>
 
     <build>
         <plugins>

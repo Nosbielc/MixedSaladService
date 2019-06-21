@@ -1,0 +1,14 @@
+server:
+  port: 9000
+
+security:
+  jwt:
+    key-store: classpath:/keys/oauthjwt.jks
+    key-store-password: oauthjwt
+    key-pair-alias: oauthjwt
+    key-pair-password: oauthjwt
+
+spring:
+  jackson:
+    serialization:
+      INDENT_OUTPUT: true

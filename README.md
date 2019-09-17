@@ -57,5 +57,13 @@
  ![](images/DashBoardZipkin.PNG)
  
  ##### DashBoard eureka-Service (http://localhost:9091)
-  ![](images/DashBoardEureka.PNG)
+ ![](images/DashBoardEureka.PNG)
+  
+ ##### DashBoard Prometheus (http://localhost:7000/targets)
+ ![](images/DashBoardPrometheus.PNG)
+ 
+ ##### DashBoard Grafana (http://localhost:7001)
+ ![](images/DashBoardGrafana1.PNG)
+ ![](images/DashBoardGrafana2.PNG)
+ ![](images/DashBoardGrafana3.PNG)
     

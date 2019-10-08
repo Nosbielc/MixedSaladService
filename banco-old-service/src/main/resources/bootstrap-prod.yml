@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: banco-old-service
+  profiles:
+    active: prod
+  cloud:
+    config:
+      uri: http://config-service:9090
+pagination:
+  qtd_by_page: 100
+range:
+  port:
+    min: 8101
+    max: 8120
+banco:
+  central:
+    schedulers:
+      enabled: false
+app:
+  #random int
+  location-x: ${random.int}
+  location-y: ${random.int}
+  #random int with max
+  user-age: ${random.int(100)}
+  #random int range
+  max-users: ${random.int[1,10000]}
+  #random long with max
+  refresh-rate-milli: ${random.long(1000000)}
+  #random long range
+  initial-delay-milli: ${random.long[100,90000000000000000]}
+  #random 32 bytes
+  user-password: ${random.value}
+  #random uuid. Uses java.util.UUID.randomUUID()
+  instance-id: ${random.uuid}
+info:
+  app:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    encoding: @project.build.sourceEncoding@
+    java:
+      version: "1.8"

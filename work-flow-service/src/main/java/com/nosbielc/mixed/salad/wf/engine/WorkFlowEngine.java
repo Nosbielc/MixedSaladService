@@ -1,9 +1,5 @@
 package com.nosbielc.mixed.salad.wf.engine;
 
-/**
- * @author Cleibson Gomes (https://github.com/Nosbielc) ON 11/10/2019
- * @project mixed-salad-service
- */
 import com.nosbielc.mixed.salad.wf.work.WorkReport;
 import com.nosbielc.mixed.salad.wf.workflow.WorkFlow;
 

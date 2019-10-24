@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -32,7 +31,7 @@ class ParallelFlowExecutor {
     private ExecutorService workExecutor;
 
     ParallelFlowExecutor() {
-        this.workExecutor = Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors());;
+        this.workExecutor = Executors.newScheduledThreadPool(Runtime.getRuntime().availableProcessors());
     }
 
     List<WorkReport> executeInParallel(List<Work> works) {
@@ -50,7 +49,7 @@ class ParallelFlowExecutor {
 
         // poll for work completion
         int finishedWorks = works.size();
-        // FIXME polling futures for completion, not sure this is the best way to run callables in parallel and wait them for completion (use CompletionService??)
+        //FIXME polling futures for completion, not sure this is the best way to run callables in parallel and wait them for completion (use CompletionService??)
         while (finishedWorks > 0) {
             for (Future<WorkReport> future : reportFutures.values()) {
                 if (future != null && future.isDone()) {
@@ -64,7 +63,7 @@ class ParallelFlowExecutor {
         for (Map.Entry<Work, Future<WorkReport>> entry : reportFutures.entrySet()) {
             try {
                 workReports.add(entry.getValue().get());
-            } catch (InterruptedException | ExecutionException e) {
+            } catch (Exception e) {
                 LOGGER.log(Level.WARNING, "Unable to get work report of work ''{0}''", entry.getKey().getName());
             }
         }

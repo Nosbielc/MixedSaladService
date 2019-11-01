@@ -19,11 +19,14 @@
         <module>auth-service</module>
         <module>dashboard-service</module>
         <module>zipkin-service</module>
+        <module>jaeger-service</module>
 
         <module>oauth-server-service</module>
         <module>oauth-resource-service</module>
 
         <module>banco-central-service</module>
+        <module>banco-old-service</module>
+        <module>work-flow-service</module>
 
     </modules>
 

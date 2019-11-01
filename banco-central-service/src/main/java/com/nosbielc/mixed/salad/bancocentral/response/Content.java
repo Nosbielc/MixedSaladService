@@ -1,5 +1,10 @@
 package com.nosbielc.mixed.salad.bancocentral.response;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Content<T> {
 
     private T objects;
@@ -8,11 +13,4 @@ public class Content<T> {
         // construtor vazio
     }
 
-    public T getObjects() {
-        return objects;
-    }
-
-    public void setObjects(T objects) {
-        this.objects = objects;
-    }
 }

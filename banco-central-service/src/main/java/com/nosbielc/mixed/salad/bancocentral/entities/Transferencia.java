@@ -1,6 +1,8 @@
 package com.nosbielc.mixed.salad.bancocentral.entities;
 
 import com.nosbielc.mixed.salad.bancocentral.enums.TransferenciaStatus;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedBy;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.StringJoiner;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "transferencia")
 public class Transferencia implements Serializable {
@@ -56,78 +60,6 @@ public class Transferencia implements Serializable {
     }
 
     public Transferencia() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAutenticacao() {
-        return autenticacao;
-    }
-
-    public void setAutenticacao(String autenticacao) {
-        this.autenticacao = autenticacao;
-    }
-
-    public Float getValorTransferencia() {
-        return valorTransferencia;
-    }
-
-    public void setValorTransferencia(Float valorTransferencia) {
-        this.valorTransferencia = valorTransferencia;
-    }
-
-    public Date getDateTimeTransferencia() {
-        return dateTimeTransferencia;
-    }
-
-    public void setDateTimeTransferencia(Date dateTimeTransferencia) {
-        this.dateTimeTransferencia = dateTimeTransferencia;
-    }
-
-    public Banco getBancoOrigem() {
-        return bancoOrigem;
-    }
-
-    public void setBancoOrigem(Banco bancoOrigem) {
-        this.bancoOrigem = bancoOrigem;
-    }
-
-    public String getContaOrigem() {
-        return contaOrigem;
-    }
-
-    public void setContaOrigem(String contaOrigem) {
-        this.contaOrigem = contaOrigem;
-    }
-
-    public TransferenciaStatus getTransferenciaStatus() {
-        return transferenciaStatus;
-    }
-
-    public void setTransferenciaStatus(TransferenciaStatus transferenciaStatus) {
-        this.transferenciaStatus = transferenciaStatus;
-    }
-
-    public Banco getBancoDestino() {
-        return bancoDestino;
-    }
-
-    public void setBancoDestino(Banco bancoDestino) {
-        this.bancoDestino = bancoDestino;
-    }
-
-    public String getContaDestino() {
-        return contaDestino;
-    }
-
-    public void setContaDestino(String contaDestino) {
-        this.contaDestino = contaDestino;
     }
 
     @Override

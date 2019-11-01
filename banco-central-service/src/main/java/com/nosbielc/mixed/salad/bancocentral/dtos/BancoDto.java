@@ -1,6 +1,8 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
 import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
@@ -10,19 +12,29 @@ import java.util.StringJoiner;
 
 public class BancoDto implements Serializable {
 
+    @Getter
+    @Setter
     private Long id;
 
+    @Getter
+    @Setter
     @NotNull(message = "CodBanco não pode ser null.")
     private Long codBanco;
 
+    @Getter
+    @Setter
     @NotEmpty(message = "strNomeBase não pode ser null.")
     @Length(min = 5, max = 10, message = "strNomeBase pode ter no minimo 5 e maximo 10 caracteres.")
     private String strNomeBase;
 
+    @Getter
+    @Setter
     @NotEmpty(message = "strNome não pode ser null.")
     @Length(min = 5, max = 200, message = "strNome pode ter no minimo 5 e maximo 10 caracteres.")
     private String strNome;
 
+    @Getter
+    @Setter
     private Boolean ativo;
 
     public BancoDto() {
@@ -57,43 +69,4 @@ public class BancoDto implements Serializable {
                 .toString();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getCodBanco() {
-        return codBanco;
-    }
-
-    public void setCodBanco(Long codBanco) {
-        this.codBanco = codBanco;
-    }
-
-    public String getStrNomeBase() {
-        return strNomeBase;
-    }
-
-    public void setStrNomeBase(String strNomeBase) {
-        this.strNomeBase = strNomeBase;
-    }
-
-    public String getStrNome() {
-        return strNome;
-    }
-
-    public void setStrNome(String strNome) {
-        this.strNome = strNome;
-    }
-
-    public Boolean getAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
 }

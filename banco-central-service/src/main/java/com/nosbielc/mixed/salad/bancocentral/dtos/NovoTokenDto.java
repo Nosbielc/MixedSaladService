@@ -1,5 +1,7 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
+@Getter
+@Setter
 public class NovoTokenDto implements Serializable {
 
     @NotEmpty(message = "strConta não pode ser null.")
@@ -29,19 +33,4 @@ public class NovoTokenDto implements Serializable {
                 .toString();
     }
 
-    public String getStrConta() {
-        return strConta;
-    }
-
-    public void setStrConta(String strConta) {
-        this.strConta = strConta;
-    }
-
-    public Long getBancoId() {
-        return bancoId;
-    }
-
-    public void setBancoId(Long bancoId) {
-        this.bancoId = bancoId;
-    }
 }

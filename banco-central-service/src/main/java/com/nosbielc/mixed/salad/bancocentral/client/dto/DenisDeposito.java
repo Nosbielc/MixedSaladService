@@ -1,11 +1,17 @@
 package com.nosbielc.mixed.salad.bancocentral.client.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.StringJoiner;
 
+@Getter
+@Setter
 public class DenisDeposito implements Serializable {
 
     private String cpf;
+
     private Double valor;
 
     public DenisDeposito(String cpf, Double valor) {
@@ -24,19 +30,4 @@ public class DenisDeposito implements Serializable {
                 .toString();
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Double getValor() {
-        return valor;
-    }
-
-    public void setValor(Double valor) {
-        this.valor = valor;
-    }
 }

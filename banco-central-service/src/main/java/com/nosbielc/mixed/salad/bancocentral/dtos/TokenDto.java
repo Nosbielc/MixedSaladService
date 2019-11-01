@@ -1,9 +1,13 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
 import com.nosbielc.mixed.salad.bancocentral.entities.Banco;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 public class TokenDto implements Serializable {
 
     private Long id;
@@ -30,35 +34,4 @@ public class TokenDto implements Serializable {
     public TokenDto() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getStrToken() {
-        return strToken;
-    }
-
-    public void setStrToken(String strToken) {
-        this.strToken = strToken;
-    }
-
-    public String getStrConta() {
-        return strConta;
-    }
-
-    public void setStrConta(String strConta) {
-        this.strConta = strConta;
-    }
-
-    public Banco getBanco() {
-        return banco;
-    }
-
-    public void setBanco(Banco banco) {
-        this.banco = banco;
-    }
 }

@@ -1,5 +1,7 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
+@Getter
+@Setter
 public class NovoBancoDto implements Serializable {
 
     @NotNull(message = "CodBanco não pode ser null.")
@@ -28,30 +32,6 @@ public class NovoBancoDto implements Serializable {
                         String strNome) {
         this.codBanco = codBanco;
         this.strNomeBase = strNomeBase;
-        this.strNome = strNome;
-    }
-
-    public Long getCodBanco() {
-        return codBanco;
-    }
-
-    public void setCodBanco(Long codBanco) {
-        this.codBanco = codBanco;
-    }
-
-    public String getStrNomeBase() {
-        return strNomeBase;
-    }
-
-    public void setStrNomeBase(String strNomeBase) {
-        this.strNomeBase = strNomeBase;
-    }
-
-    public String getStrNome() {
-        return strNome;
-    }
-
-    public void setStrNome(String strNome) {
         this.strNome = strNome;
     }
 

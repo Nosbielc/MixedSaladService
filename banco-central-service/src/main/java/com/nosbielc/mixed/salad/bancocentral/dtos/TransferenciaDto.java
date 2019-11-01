@@ -1,5 +1,7 @@
 package com.nosbielc.mixed.salad.bancocentral.dtos;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotEmpty;
@@ -7,6 +9,8 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.StringJoiner;
 
+@Getter
+@Setter
 public class TransferenciaDto implements Serializable {
 
     @NotEmpty(message = "valorTransferencia não pode ser null.")
@@ -45,53 +49,5 @@ public class TransferenciaDto implements Serializable {
                 .add("contaDestino='" + contaDestino + "'")
                 .add("code=" + code)
                 .toString();
-    }
-
-    public String getValorTransferencia() {
-        return valorTransferencia;
-    }
-
-    public void setValorTransferencia(String valorTransferencia) {
-        this.valorTransferencia = valorTransferencia;
-    }
-
-    public Long getBancoOrigem() {
-        return bancoOrigem;
-    }
-
-    public void setBancoOrigem(Long bancoOrigem) {
-        this.bancoOrigem = bancoOrigem;
-    }
-
-    public String getContaOrigem() {
-        return contaOrigem;
-    }
-
-    public void setContaOrigem(String contaOrigem) {
-        this.contaOrigem = contaOrigem;
-    }
-
-    public Long getBancoDestino() {
-        return bancoDestino;
-    }
-
-    public void setBancoDestino(Long bancoDestino) {
-        this.bancoDestino = bancoDestino;
-    }
-
-    public String getContaDestino() {
-        return contaDestino;
-    }
-
-    public void setContaDestino(String contaDestino) {
-        this.contaDestino = contaDestino;
-    }
-
-    public Long getCode() {
-        return code;
-    }
-
-    public void setCode(Long code) {
-        this.code = code;
     }
 }

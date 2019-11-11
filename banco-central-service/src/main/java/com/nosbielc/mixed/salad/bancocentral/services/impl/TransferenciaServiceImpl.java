@@ -5,6 +5,7 @@ import com.nosbielc.mixed.salad.bancocentral.enums.TransferenciaStatus;
 import com.nosbielc.mixed.salad.bancocentral.repositories.ITransferenciaRepository;
 import com.nosbielc.mixed.salad.bancocentral.services.ITrasnferenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class TransferenciaServiceImpl implements ITrasnferenciaService {
         return this.transferenciaRepository.findByBancoOrigemPageable(bancoOrigem, pageRequest);
     }
 
+    @Cacheable(value = "findByBancoOrigem")
     @Override
     public List<Transferencia> findByBancoOrigem(Long bancoOrigem) {
         return this.transferenciaRepository.findByBancoOrigem(bancoOrigem);
@@ -38,6 +40,7 @@ public class TransferenciaServiceImpl implements ITrasnferenciaService {
         return this.transferenciaRepository.findByBancoDestinoPageable(bancoDestino, pageRequest);
     }
 
+    @Cacheable(value = "findByBancoDestino")
     @Override
     public List<Transferencia> findByBancoDestino(Long bancoDestino) {
         return this.transferenciaRepository.findByBancoDestino(bancoDestino);

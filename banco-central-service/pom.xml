@@ -240,6 +240,17 @@
                         </resource>
                     </resources>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>All</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>removeImage</goal>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>

@@ -2,10 +2,12 @@ spring:
   application:
     name: banco-central-service
   profiles:
-    active: dev
+    active: @spring.profiles.active@
   cloud:
     config:
       uri: http://localhost:9090
+  main:
+    banner-mode: log
 pagination:
   qtd_by_page: 100
 range:
@@ -39,4 +41,4 @@ info:
     version: @project.version@
     encoding: @project.build.sourceEncoding@
     java:
-      version: "1.8"
+      version: @java.version@

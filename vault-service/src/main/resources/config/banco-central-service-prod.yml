@@ -1,0 +1,104 @@
+#server:
+#  port: 8001
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:9091/eureka/
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/banco-central-service-${app.instance-id}.log
+
+banco:
+  central:
+    circuitBreaker:
+      enabled: false
+
+spring:
+  application:
+    name: banco-central-service
+  zipkin:
+    base-url: http://zipkin-service:9095/
+  profiles:
+    active: prod
+  cloud:
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password" 
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+    url: jdbc:h2:file:./dbs/bancocentral-${app.instance-id}-app;DB_CLOSE_ON_EXIT=TRUE
+    platform: h2
+    username: bancocentral
+    password: bancocentral
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        type: trace
+        jdbc:
+          time_zone: UTC-3
+  ###
+  #   H2 Settings
+  ###
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: true
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+    jmx:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    jmx:
+      enabled: true
+  health:
+    mongo:
+      enabled: false
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+#      elastic:
+#        # You will probably want disable Elastic publishing in a local development profile.
+#        enabled: false
+#        # The interval at which metrics are sent to Elastic. The default is 1 minute.
+#        step: 1m
+#        # The index to store metrics in, defaults to "metrics"
+#        index: metrics
+#        host: http://localhost:9200
+authserver:
+  hostname: http://auth-service:9092/oauth
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${authserver.hostname}/user

@@ -1,0 +1,24 @@
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/config-service.log
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9091/eureka/
+
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: dev
+  cloud:
+    boot:
+      admin:
+        client:
+          url: http://localhost:9094/admin
+          username: "user"
+          password: "password"
+  zipkin:
+    base-url: http://localhost:9095/

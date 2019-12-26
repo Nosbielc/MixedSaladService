@@ -1,0 +1,97 @@
+server:
+  port: 9093
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-service:9091/eureka/
+
+security:
+ oauth2:
+   client:
+     access-token-validity-seconds: 1800
+     authorized-grant-types: password,refresh_token
+     client-id: mixedSalad
+     client-secret: $2a$10$p9Paskd33kggkadgadknqeqe9999qdq2dk0fQNAQSesI4vuvKA0OZanDD2
+     resource-ids: resources
+     scope: read,write
+    #   accessTokenUri: http://localhost:9093/auth/oauth/token
+    #   userAuthorizationUri: http://localhost:9093/auth/oauth/authorize
+    # resource:
+    #   userInfoUri: http://localhost:9093/auth/user/me
+  
+# Injected properties
+auth:
+  redirectionUrl: http://auth-service:9093/auth
+  emailFrom: noreply@example.com
+  corsAllowedOrigins: "*"
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: false
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    jmx:
+      enabled: true
+  health:
+    mongo:
+      enabled: false
+spring:
+  application:
+    name: auth-service
+  profiles:
+    active: prod
+  zipkin:
+    base-url: http://zipkin-service:9095/
+  cloud:
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password" 
+  jackson: 
+    time-zone: America/Sao_Paulo
+  datasource:
+    hikari:
+      maximum-pool-size: 25
+    url: jdbc:h2:file:./dbs/auth-app;DB_CLOSE_ON_EXIT=TRUE
+    platform: h2
+    username: authapp
+    password: authapp
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+        type: trace
+        jdbc:
+          time_zone: America/Sao_Paulo
+  h2:
+    console:
+      enabled: true
+      path: /console
+      settings:
+        trace: false
+        web-allow-others: true
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/auth-service.log

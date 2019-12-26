@@ -1,0 +1,33 @@
+server:
+  port: 9096
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/vault-service.log
+
+spring:
+  profiles:
+    active: @spring.profiles.active@
+  application:
+    name: vault-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Nosbielc/MixedSaladServiceConfig
+    vault:
+      host: localhost
+      port: 8200
+      scheme: http
+      authentication: token
+      token: root
+
+info:
+  app:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+    encoding: @project.build.sourceEncoding@
+    java:
+      version: "1.8"

@@ -1,0 +1,37 @@
+server:
+  port: 9091
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://discovery-service:9091/eureka/
+
+eureka:
+  datacenter: MixedSalad
+  environmenr: Produção
+  instance:
+    hostname: discovery-service
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+spring:
+  cloud:    
+    boot:
+      admin:
+        client:
+          url: http://admin-service:9094/admin
+          username: "user"
+          password: "password"
+  zipkin:
+    base-url: http://zipkin-service:9095/
+  profiles:
+    active: prod
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} ${LOG_LEVEL_PATTERN:-%5p} %m%n"
+  file: logs/discovery-service.log

@@ -1,0 +1,21 @@
+FROM gradle:jdk11 as builder
+
+COPY --chown=gradle:gradle . /home/gradle/src
+
+WORKDIR /home/gradle/src
+
+RUN gradle clean build
+
+FROM openjdk:11-jre-slim-sid
+
+EXPOSE 8080
+
+COPY --from=builder /home/gradle/src/build/libs/*.jar meu-microservico.jar
+
+RUN /usr/bin/java -XX:+UseAppCDS -XX:DumpLoadedClassList=classes.lst -jar meu-microservico.jar & sleep 5 && exit
+
+--RUN /usr/bin/java -Xshare:dump -XX:+UseAppCDS -XX:MetaspaceSize=256m -XX:SharedClassListFile=classes.lst -XX:SharedArchiveFile=app-cds.jsa --class-path meu-microservico.jar //opcional
+
+RUN /usr/bin/java -Xshare:dump -XX:+UseAppCDS -XX:SharedClassListFile=classes.lst -XX:SharedArchiveFile=./app-cds.jsa --class-path meu-microservico.jar
+
+ENTRYPOINT /usr/bin/java -Xshare:on -XX:SharedArchiveFile=app-cds.jsa -jar "meu-microservico.jar"
